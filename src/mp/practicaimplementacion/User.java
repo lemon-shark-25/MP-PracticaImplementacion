@@ -13,7 +13,9 @@ public abstract class User {
 	private String nick;
 	private String password;
 
-	public User(String n){
+	public User(String n, String nck, String p){
 		name = n;
+		nick = nck;
+		password = p;
 	}
 }
