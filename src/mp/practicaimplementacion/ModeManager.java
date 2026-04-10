@@ -8,8 +8,10 @@ package mp.practicaimplementacion;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class ClasePrueba {
-	public void prueba(){
-		System.out.println("Hola");
+class ModeManager {
+
+	void start() {
+		Mode mode = new Mode();
 	}
+	
 }
