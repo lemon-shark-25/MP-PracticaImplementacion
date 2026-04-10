@@ -14,7 +14,9 @@ public class MPPracticaImplementacion {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		// TODO code application logic here
+		ClasePrueba cp = new ClasePrueba();
+		
+		cp.prueba();
 	}
 	
 }
