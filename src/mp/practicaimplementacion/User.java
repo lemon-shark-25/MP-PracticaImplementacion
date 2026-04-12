@@ -18,4 +18,18 @@ public abstract class User {
 		nick = nck;
 		password = p;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+		
 }
