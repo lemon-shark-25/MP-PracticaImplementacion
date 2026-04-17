@@ -8,11 +8,11 @@ package domain;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class DefenceAlgorithm implements Algorithm {
+public class DamageAlgorithm implements Algorithm{
 
 	@Override
 	public int execute(Character c) {
-		
+
 	}
-		
+	
 }
