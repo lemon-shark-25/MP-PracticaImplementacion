@@ -5,6 +5,7 @@
 package domain;
 
 /**
+ * Algoritmo de daño. Implementa el patrón
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
