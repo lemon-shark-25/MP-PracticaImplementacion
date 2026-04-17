@@ -8,18 +8,6 @@ package mp.practicaimplementacion;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class Player extends User{
-	private String registerNumber;	
-	private int gold;
-	
-	public Player(String n, String nck, String p){
-		super(n, nck, p);
-		registerNumber = newRegisterNumber();
-		gold = 0;
-	}
-
-	public int getGold(){
-		return this.gold;
-	}
+public class Administrator {
 	
 }
