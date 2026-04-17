@@ -9,5 +9,6 @@ package domain;
  * @author Usuario
  */
 public interface Minion {
+    gogogo
     
 }
