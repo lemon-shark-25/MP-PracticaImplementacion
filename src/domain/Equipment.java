@@ -9,9 +9,9 @@ package domain;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public abstract class Equipment {
-	private String name;
-	private int attackModifier;
-	private int defenseModifier;
+	private final String name;
+	private final int attackModifier;
+	private final int defenseModifier;
 
 	public Equipment(String n, int am, int dm){
 		name = n;
