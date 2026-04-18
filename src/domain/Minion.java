@@ -10,5 +10,6 @@ package domain;
  */
 public interface Minion {
     funciona el push?
+    ya funciona mi gente
     
 }
