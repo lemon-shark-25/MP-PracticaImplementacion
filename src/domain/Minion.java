@@ -9,6 +9,6 @@ package domain;
  * @author Usuario
  */
 public interface Minion {
-    gogogo
+    funciona el push?
     
 }
