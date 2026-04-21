@@ -1,0 +1,13 @@
+
+package domain;
+
+/**
+ *
+ * @author Hugo Martínez González
+ */
+public interface Modifier {
+    
+    String getName();
+    int getValue();
+    
+}
