@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author Usuario
+ * @author Hugo Martínez González
  */
 public class Demon implements Minion{
     private String name;
