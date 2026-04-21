@@ -2,7 +2,7 @@
 package domain;
 /**
  *
- * @author Usuario
+ * @author Hugo Martínez González
  */
 public class Human implements Minion{
     private String name;
