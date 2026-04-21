@@ -3,7 +3,7 @@ package domain;
 
 /**
  *
- * @author Usuario
+ * @author Hugo Martínez González
  */
 public interface Minion  {
      String getName();
