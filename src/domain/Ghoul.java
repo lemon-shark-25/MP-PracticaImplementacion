@@ -3,7 +3,7 @@ package domain;
 
 /**
  *
- * @author Usuario
+ * @author Hugo Martínez González
  */
 public class Ghoul implements Minion{
     
