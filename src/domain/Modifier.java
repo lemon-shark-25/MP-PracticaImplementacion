@@ -8,6 +8,7 @@ package domain;
 public interface Modifier {
     
     String getName();
+    int getType();
     int getValue();
     
 }
