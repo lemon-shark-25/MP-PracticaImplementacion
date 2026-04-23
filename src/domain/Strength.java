@@ -7,7 +7,7 @@ package domain;
  */
 public class Strength extends Modifier {
     
-    public Strength(String name, int valuee) {
-        super(name,valuee);
+    public Strength(String name, int valuee, int type) {
+        super(name,valuee, type);
     }
 }
