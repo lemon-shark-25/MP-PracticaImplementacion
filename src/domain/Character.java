@@ -42,13 +42,23 @@ public abstract class Character {
 	}
 
 	public int getHealth() {
-		return health;
+		return health + minion.getHealth();
 	}
 
 	public int getPower() {
 		return power;
 	}
 
+    public Ability getAbility() {
+        return ability;
+    }
 
+    public Equipment getPrincipalArmor() {
+        return principalArmor;
+    }
+
+    public Equipment getPrincipalWeapon() {
+        return principalWeapon;
+    }
 
 }
