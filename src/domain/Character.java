@@ -13,27 +13,30 @@ public abstract class Character {
 	private final String name;	
 	private final int health;
 	private final int power;
-        private HashMap<String,Ability> ability;
-        private HashMap<String,Equipment> equipment;
+        private Ability ability;
+        private HashMap<String,Armor> armor;
+        private HashMap<String,Weapons> weapon;       
         private Minion minion;
-        private LinkedList<Modifier> modifier;
-        private Equipment principalEquipment;
-        
-        
+        private LinkedList<Strength> strength;
+        private LinkedList<Weakness> weakness;
+        private Equipment principalArmor;
+        private Equipment principalWeapon;
+        //Tal vez hay que crear una segunda variable de weapon si son dos armas de una mano o un array de 2 y comprobar si el pruimero y dependiendo de eso miras el segundo
 
-    public Character(String name, int health, int power, HashMap<String, Ability> ability, HashMap<String, Equipment> equipment, Minion minion, LinkedList<Modifier> modifier, Equipment principalEquipment) {
+    public Character(String name, int health, int power, Ability ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, LinkedList<Strength> strength, LinkedList<Weakness> weakness, Equipment principalArmor, Equipment principalWeapon) {
         this.name = name;
         this.health = health;
         this.power = power;
         this.ability = ability;
-        this.equipment = equipment;
+        this.armor = armor;
+        this.weapon = weapon;
         this.minion = minion;
-        this.modifier = modifier;
-        this.principalEquipment = principalEquipment;
-    }        
-
-
-
+        this.strength = strength;
+        this.weakness = weakness;
+        this.principalArmor = principalArmor;
+        this.principalWeapon = principalWeapon;
+    }
+        
 	public String getName() {
 		return name;
 	}
