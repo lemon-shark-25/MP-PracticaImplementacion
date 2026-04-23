@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/mp/practicaimplementacion/MPPracticaImplementacion.java</file>
-            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/mp/practicaimplementacion/ModeManager.java</file>
-            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/mp/practicaimplementacion/User.java</file>
-            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/mp/practicaimplementacion/Player.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/control/Mode.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/intereaction/Screen.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/domain/Algorithm.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/domain/DefenceAlgorithm.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/domain/DamageAlgorithm.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/domain/Character.java</file>
+            <file>file:/C:/Users/prado/OneDrive/Escritorio/Ignacio/URJC/Segundo/2doCua/MP/MP-PracticaImplementacion/src/domain/Player.java</file>
         </group>
     </open-files>
 </project-private>
