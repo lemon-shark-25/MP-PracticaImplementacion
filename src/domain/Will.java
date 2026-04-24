@@ -16,5 +16,5 @@ public class Will extends Ability{
     public int getRageValue() {
         return rageValue;
     }
-    
+ //diego es maricon   
 }
