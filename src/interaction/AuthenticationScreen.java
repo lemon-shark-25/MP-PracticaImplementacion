@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package intereaction;
+package interaction;
+
+import java.util.Scanner;
 
 /**
  *
@@ -12,6 +14,8 @@ public class AuthenticationScreen implements Screen{
 
 	@Override
 	public char showScreen() {
+		Scanner s = new Scanner(); 
+		
 		System.out.println("""
                      ¡Bienvenido a Simulador de Combate Fantástico!
                      Seleccione una de las siguientes opciones:
@@ -19,7 +23,7 @@ public class AuthenticationScreen implements Screen{
                      b) Crear cuenta
                      c) Salir del juego
 		""");
-		
+				
 	}
 		
 }

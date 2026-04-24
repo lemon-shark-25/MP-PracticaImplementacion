@@ -4,7 +4,7 @@
  */
 package control;
 
-import intereaction.Screen;
+import interaction.Screen;
 
 /**
  *
