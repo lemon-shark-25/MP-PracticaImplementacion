@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package domain;
 
 /**
  *
- * @author Usuario
+ * @author Hugo Martínez González
  */
-public interface Minion {
-    
+public interface Minion  {
+     String getName();
+     int getHealth();
 }
