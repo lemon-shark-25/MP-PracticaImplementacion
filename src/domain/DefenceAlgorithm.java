@@ -5,14 +5,20 @@
 package domain;
 
 /**
+ * Algoritmo de daño. Implementa el patrón
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class DefenceAlgorithm implements Algorithm {
+public class DefenceAlgorithm implements Algorithm{
 
 	@Override
+<<<<<<< HEAD
 	public int execute(GameCharacter c) {
 		//push test	
+=======
+	public int execute(Character c) {
+
+>>>>>>> feature/algoritmos
 	}
-		
+	
 }
