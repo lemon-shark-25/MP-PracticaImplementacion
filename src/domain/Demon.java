@@ -11,11 +11,11 @@ import java.util.LinkedList;
 public class Demon implements Minion{
     private String name;
     private int health;
-    private Character owner;
+    private GameCharacter owner;
     private String pact;
     private LinkedList<Minion> minions;
 
-    public Demon(String name, int health, Character owner, String pact, LinkedList<Minion> minions) {
+    public Demon(String name, int health, GameCharacter owner, String pact, LinkedList<Minion> minions) {
         this.name = name;
         this.health = health;
         this.owner = owner;
@@ -23,7 +23,7 @@ public class Demon implements Minion{
         this.minions = minions;
     }
 
-    public Character getOwner() {
+    public GameCharacter getOwner() {
         return owner;
     }
     public String getPact() {

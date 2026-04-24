@@ -5,6 +5,7 @@
 package interaction;
 
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -12,10 +13,13 @@ import java.util.Scanner;
  */
 public class AuthenticationScreen implements Screen{
 
+	Scanner scanner;
+	public AuthenticationScreen(Scanner s){
+		this.scanner = s;
+	}
+	
 	@Override
-	public char showScreen() {
-		Scanner s = new Scanner(); 
-		
+	public char showScreen(Set<Character> validOptions) {
 		System.out.println("""
                      ¡Bienvenido a Simulador de Combate Fantástico!
                      Seleccione una de las siguientes opciones:
@@ -23,7 +27,18 @@ public class AuthenticationScreen implements Screen{
                      b) Crear cuenta
                      c) Salir del juego
 		""");
-				
-	}
-		
+
+		while(true){
+		System.out.print("Opción:");
+		String input = scanner.nextLine().trim().toLowerCase();
+
+			if (!input.isEmpty()){
+				char choice = input.charAt(0);
+				if (validOptions.contains(choice)){
+					return choice;
+				}
+				System.out.println("Opción inválida.");
+			}
+		}
+	}	
 }

@@ -8,12 +8,12 @@ package domain;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public abstract class Character {
+public abstract class GameCharacter {
 	private final String name;	
 	private final int health;
 	private final int power;
 
-	public Character(String name, int health, int power) {
+	public GameCharacter(String name, int health, int power) {
 		this.name = name;
 		this.health = health;
 		this.power = power;

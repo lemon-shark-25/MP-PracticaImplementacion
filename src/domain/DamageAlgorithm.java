@@ -12,7 +12,7 @@ package domain;
 public class DamageAlgorithm implements Algorithm{
 
 	@Override
-	public int execute(Character c) {
+	public int execute(GameCharacter c) {
 
 	}
 	

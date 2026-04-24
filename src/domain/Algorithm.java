@@ -10,5 +10,5 @@ package domain;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public interface Algorithm {
-	public int execute(Character c);
+	public int execute(GameCharacter c);
 }

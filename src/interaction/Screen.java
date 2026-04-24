@@ -4,10 +4,18 @@
  */
 package interaction;
 
+import java.util.Set;
+
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public interface Screen {
-	public char showScreen();
+
+	/**
+	 *
+	 * @param validOptions
+	 * @return
+	 */
+	public char showScreen(Set<Character> validOptions);
 }

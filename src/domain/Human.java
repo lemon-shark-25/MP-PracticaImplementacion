@@ -8,9 +8,9 @@ public class Human implements Minion{
     private String name;
     private int health;
     private String loyalty;
-    private Character owner;
+    private GameCharacter owner;
     
-    public Human(String name, int health, String loyalty, Character owner){
+    public Human(String name, int health, String loyalty, GameCharacter owner){
         this.name = name;
         this.health = health;
         this.loyalty = loyalty;
@@ -31,7 +31,7 @@ public class Human implements Minion{
         return health;
     }
     
-    public Character getOwner() {
+    public GameCharacter getOwner() {
         return owner;
     }
 }
