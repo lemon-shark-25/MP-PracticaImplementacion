@@ -60,5 +60,12 @@ public abstract class Character {
     public Equipment getPrincipalWeapon() {
         return principalWeapon;
     }
+    
+    public LinkedList<Strength> getStrength() {
+        return strength;
+    }
 
+    public LinkedList<Weakness> getWeakness() {
+        return weakness;
+    }
 }
