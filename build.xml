@@ -73,7 +73,11 @@
 <!--Añadido-->
 <target name="sonar" depends="compile">
     <exec executable="C:\SonarScanner\sonar-scanner-8.0.1.6346-windows-x64\bin\sonar-scanner.bat">
-	<arg value="-Dsonar.login=@sonar-token.properties"/>
+        <!-- Jenkins -->
+        <arg value="-Dsonar.token=${env.SONAR_TOKEN}"/>
+
+        <!-- Local (fallback) -->
+        <arg value="-Dsonar.login=@sonar-token.properties"/>
     </exec>
 </target>
 </project>
