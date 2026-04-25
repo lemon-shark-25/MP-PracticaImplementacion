@@ -50,3 +50,5 @@ public class DamageAlgorithmTest {
 		assertEquals(expResult, result);
 	}
 
+}
+
