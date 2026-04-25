@@ -1,8 +1,20 @@
 # MP-PracticaImplementacion
 Repositorio para el trabajo de MP.
 
-## Techonologies
+## Tecnología
+- Java JDK 21
+- Apache Ant
+- SonarQube (local)
+- SonarScanner CLI
 
+Compilación:
+  ant clean compile
+
+Análisis de calidad:
+  ant sonar
+
+Resultados:
+  Accesibles desde http://localhost:9000
 ## Ejecución
 Compilcación y ejecución con Ant desde código fuente.
 Ejecución del .jar con java.
