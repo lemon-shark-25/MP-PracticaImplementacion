@@ -38,12 +38,3 @@ El análisis de calidad se ejecuta contra una instancia local de SonarQube.
 Las credenciales de acceso (token) no se almacenan en el repositorio y se
 gestionan externamente.
 
-
-Nota: Para ejecutar el análisis con SonarQube es necesario definir
-la variable de entorno SONAR_TOKEN con un token válido.
-
-Ejemplo (Windows PowerShell):
-  $env:SONAR_TOKEN="token"
-
-Ejemplo (Linux/macOS):
-  export SONAR_TOKEN=token
