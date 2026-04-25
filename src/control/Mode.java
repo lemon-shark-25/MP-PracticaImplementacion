@@ -12,5 +12,5 @@ import interaction.Screen;
  */
 public interface Mode {
 	public void showScreen(Screen s);
-	public Screen doAction(char c)
+	public Screen doAction(char c);
 }
