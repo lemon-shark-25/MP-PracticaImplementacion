@@ -12,9 +12,35 @@ import java.util.Set;
  */
 public class UserScreen implements Screen{
 
+	Scanner scanner;
+	public UserScreen(Scanner s){
+		this.scanner = s;
+	}
+
 	@Override
 	public char showScreen(Set<Character> validOptions) {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-	}
+		System.out.println("""
+					[Menú Principal]
+                    Seleccione una de las siguientes opciones:
+                    a) Registrar personaje 
+                    b) Dar de baja personaje
+                    c) Desafiar usuario
+					d) Consultar oro
+					e) Consultar ranking global
+		""");
+
+		while(true){
+		System.out.print("Opción:");
+		String input = scanner.nextLine().trim().toLowerCase();
+
+			if (!input.isEmpty()){
+				char choice = input.charAt(0);
+				if (validOptions.contains(choice)){
+					return choice;
+				}
+				System.out.println("Opción inválida.");
+			}
+		}
+	}	
 	
 }
