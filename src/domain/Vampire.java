@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Clase que representa a la raza Vampiro dentro del juego.
  * @author Miguel Pradillo Bartolomé
  */
-public class Vampire extends Character {
+public class Vampire extends GameCharacter {
 
     private int bloodPoints;
     private int age;

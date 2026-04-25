@@ -12,7 +12,7 @@ public class DefenceAlgorithm implements Algorithm {
 
 	@Override
 	public int execute(GameCharacter c) {
-		//push test	
+		return 0;
 	}
 		
 }

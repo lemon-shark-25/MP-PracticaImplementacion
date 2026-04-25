@@ -13,7 +13,7 @@ public class DamageAlgorithm implements Algorithm{
 
 	@Override
 	public int execute(GameCharacter c) {
-
+		return 0;
 	}
 	
 }

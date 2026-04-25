@@ -8,7 +8,7 @@ import java.util.LinkedList;
  *
  * @author Hugo Martínez González
  */
-public class Lycanthrope extends Character {
+public class Lycanthrope extends GameCharacter {
     private int heigth;
     private int weigth;
     private int rage;
