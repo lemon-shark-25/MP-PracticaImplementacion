@@ -108,7 +108,7 @@ public class VampireBuilder implements CharacterBuilder {
     // --- Método Final de Construcción ---
 
     @Override
-    public Character build() {
+    public GameCharacter build() {
         // Validaciones finales antes de crear (Opcional, pero muy recomendado)
         if (this.name == null || this.name.isEmpty()) {
             throw new IllegalStateException("No se puede crear un personaje sin nombre.");

@@ -32,5 +32,5 @@ public interface CharacterBuilder {
      * Método final que ensambla y devuelve el objeto Character construido.
      * @return Instancia final del personaje (Vampire, Lycanthrope o Hunter)
      */
-    Character build();
+    GameCharacter build();
 }
