@@ -36,7 +36,7 @@ public class DamageAlgorithmTest {
 	public void tearDown() {
 	}
 	
-}
+
 	/**
 	 * Test of execute method, of class DamageAlgorithm.
 	 */
