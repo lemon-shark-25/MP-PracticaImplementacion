@@ -17,7 +17,7 @@ Análisis de calidad:
 Compilcación y ejecución con Ant desde código fuente.
 Ejecución del .jar con java.
 
-## Requirements (dependencias a parte del JDK)
+## Requirements
 Dependencias para correr el proyecto:
 - JDK 21.0.10 (Oracle): recomendamos instalarlo a través a través del ejecutable (.exe), porque así se asignan las variables de entorno automáticamente.
 - Uno de los siguientes:
