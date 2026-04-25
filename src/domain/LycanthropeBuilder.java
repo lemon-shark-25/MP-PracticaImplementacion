@@ -114,7 +114,7 @@ public class LycanthropeBuilder implements CharacterBuilder {
     // --- Método Final de Construcción ---
 
     @Override
-    public Character build() {
+    public GameCharacter build() {
         // Validaciones de seguridad básicas
         if (this.name == null || this.name.isEmpty()) {
             throw new IllegalStateException("Error: No se puede crear un personaje sin nombre.");
