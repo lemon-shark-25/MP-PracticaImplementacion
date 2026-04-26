@@ -4,6 +4,7 @@
  */
 package interaction;
 
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Set;
  */
 public class UserScreen implements Screen{
 
-	Scanner scanner;
+	private final Scanner scanner;
 	public UserScreen(Scanner s){
 		this.scanner = s;
 	}

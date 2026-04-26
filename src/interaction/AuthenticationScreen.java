@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class AuthenticationScreen implements Screen{
 
-	Scanner scanner;
+	private final Scanner scanner;
 	public AuthenticationScreen(Scanner s){
 		this.scanner = s;
 	}
