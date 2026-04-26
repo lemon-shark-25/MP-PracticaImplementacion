@@ -8,7 +8,7 @@ import domain.User;
 import interaction.Screen;
 
 /**
- *
+ * Implementa el patrón Decorator
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class GameContext {

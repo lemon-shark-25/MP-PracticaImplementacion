@@ -14,7 +14,6 @@ public class AuthenticationCommand implements Command{
 
 	@Override
 	public GameContext execute(GameContext gc) {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 	
 }
