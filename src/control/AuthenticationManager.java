@@ -5,13 +5,13 @@
 package control;
 
 import domain.User;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class AuthenticationManager {
-	private Map<User> users;	
+	public User authenticate(String nick, String password){
+
+	}
 }
