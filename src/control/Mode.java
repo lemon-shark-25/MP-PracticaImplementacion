@@ -11,6 +11,6 @@ import interaction.Screen;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public interface Mode {
-	public void showScreen(Screen s);
-	public Screen doAction(char c);
+	public Mode showScreen();
+	public Mode doAction(char option);
 }

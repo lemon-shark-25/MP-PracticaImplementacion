@@ -5,7 +5,6 @@
 package control;
 
 import domain.User;
-import interaction.Screen;
 
 /**
  * Implementa el patrón Decorator
@@ -13,22 +12,22 @@ import interaction.Screen;
  */
 public class GameContext {
 	private User currentUser;
-	private Screen nextScreen;
+	private Mode nextMode;
 
 	public User getCurrentUser() {
 		return currentUser;
-	}
-
-	public Screen getNextScreen() {
-		return nextScreen;
 	}
 
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
 
-	public void setNextScreen(Screen nextScreen) {
-		this.nextScreen = nextScreen;
+	public Mode getNextMode() {
+		return nextMode;
+	}
+
+	public void setNextMode(Mode mode) {
+		nextMode = mode;	
 	}
 
 }

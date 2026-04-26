@@ -8,10 +8,18 @@ package control;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-class ModeManager {
+public class ModeManager {
+	private Mode currentMode;
+
+	public ModeManager(Mode initialMode){
+		currentMode = initialMode;	
+	}
 
 	void start() {
-		Mode mode = new Mode();
+		while (currentMode != null){
+			currentMode = currentMode.showScreen();
+			
+		}
 	}
 	
 }
