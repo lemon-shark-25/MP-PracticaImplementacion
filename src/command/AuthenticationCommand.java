@@ -5,6 +5,7 @@
 package command;
 
 import control.GameContext;
+import interaction.AuthenticationScreen;
 
 /**
  *
@@ -12,8 +13,17 @@ import control.GameContext;
  */
 public class AuthenticationCommand implements Command{
 
+	private final GameContext context;
+	private final AuthenticationScreen authScreen;
+
+	public AuthenticationCommand(GameContext gc){
+		context = gc;	
+		authScreen = new AuthenticationScreen();
+	}
+
 	@Override
-	public GameContext execute(GameContext gc) {
+	public void execute() {
+		String[] credentials = authScreen.askCredentials();
 	}
 	
 }
