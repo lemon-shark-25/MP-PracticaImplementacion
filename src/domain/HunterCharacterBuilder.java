@@ -3,6 +3,7 @@ package domain;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  *
@@ -10,14 +11,14 @@ import java.util.Scanner;
  */
 public class HunterCharacterBuilder {
     
-        private HashMap<String,Ability> ability;
+        private HashMap<String,Gift> ability;
         private HashMap<String,Armor> armor;
         private HashMap<String,Weapons> weapon;       
         private Minion minion;
         private HashMap<String,Strength> strength;
         private HashMap<String,Weakness> weakness;
 
-    public HunterCharacterBuilder(HashMap<String,Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
+    public HunterCharacterBuilder(HashMap<String,Gift> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
         this.ability = ability;
         this.armor = armor;
         this.weapon = weapon;
@@ -33,6 +34,13 @@ public class HunterCharacterBuilder {
         setName(hunter,sc);
         setPower(hunter,sc);
         hunter.setHealth(5);
+        setAbility(hunter,sc);
+        
+        
+        
+        
+        
+        return hunter;
     }
     
     private void setName(Hunter hunter, Scanner sc){
@@ -52,34 +60,36 @@ public class HunterCharacterBuilder {
                 power = Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Error: Introduce un número válido.");
-                power = 0; // Importante para que el while siga siendo verdadero
+                power = 0; 
             }
-        } while (power < 1 || power > 5); // REPETIR MIENTRAS SEA INCORRECTO
+        } while (power < 1 || power > 5); 
         hunter.setPower(power);
     }
     
     private void setAbility(Hunter hunter, Scanner sc){
-        int number =1;
-    for (Ability ab: ability.values()){
-        System.out.print(number + "La habilidad se llama: " + ab.getName());
-        System.out.print("La descripción de las habilidades: " + ab.getDescription());
-    
-    
-    
+        int number =0;
+        String[] inventary = new String[5];
+        for (Ability ab: ability.values()){
+           System.out.print(number + "La habilidad se llama: " + ab.getName());
+           System.out.print("La descripción de las habilidades: " + ab.getDescription());
+           inventary[number] = ab.getName();
+           number ++;
+           if (number==inventary.length){
+               inventary = java.util.Arrays.copyOf(inventary, inventary.length * 2);
+           }
+        }
+        int abilityNumber;
+        do {
+            try {
+                System.out.print("Escoge la habilidad de tu personaje pulsando el número");
+                abilityNumber = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Introduce un número válido.");
+                abilityNumber = 0; 
+            }
+        } while (abilityNumber < 0 || abilityNumber > number-1);
+        String name = inventary[abilityNumber];
+        hunter.setAbility(ability.get(name)); 
     }
-
-
-
-
-// Suponiendo que tu HashMap se llama "habilidades"
-for (Ability ab : habilidades.values()) {
-    // Aquí ya tienes el objeto Ability, puedes llamar a sus métodos
-    ab.activarEfecto(); 
-    System.out.println("Procesando: " + ab.getNombre());
-}
-    }
-    
-
-    
     
 }
