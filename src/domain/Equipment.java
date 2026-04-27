@@ -10,13 +10,15 @@ package domain;
  */
 public abstract class Equipment {
 	private final String name;
+        private final String description;
 	private final int attackModifier;
 	private final int defenseModifier;
 
-	public Equipment(String n, int am, int dm){
+	public Equipment(String n,String descript, int am, int dm){
 		name = n;
 		attackModifier = am;
 		defenseModifier = dm;
+                description = descript;
 	}
 
 	public String getName() {
@@ -31,5 +33,10 @@ public abstract class Equipment {
 		return defenseModifier;
 	}
 
+        public String getDescription() {
+            return description;
+        }
+
+        
 	
 }
