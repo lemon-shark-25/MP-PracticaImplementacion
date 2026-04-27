@@ -6,18 +6,8 @@ package domain;
  */
 public class Vampire extends GameCharacter {
 
-    private final int bloodPoints;
+    private final int bloodPoints =0;
     private int age;
-
-    /**
-     * Constructor completo del Vampiro.
-     * (Será llamado internamente por el VampireBuilder en su método build())
-     */
-    public Vampire() {
-        bloodPoints = 0;
-    }
-
-    // --- Getters ---
 
     public int getBloodPoints() {
         return bloodPoints;
@@ -37,6 +27,7 @@ public class Vampire extends GameCharacter {
      * Sobrescribimos el getter de Ability para que devuelva directamente 
      * una Discipline y evitar conversiones manuales en el combate.
      */
+    
     @Override
     public Discipline getAbility() {
         return (Discipline) super.getAbility();
