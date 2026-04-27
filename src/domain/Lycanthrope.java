@@ -9,12 +9,8 @@ package domain;
 public class Lycanthrope extends GameCharacter {
     private int heigth;
     private int weigth;
-    private final int rage;
-
-    public Lycanthrope(){
-        this.rage = 0;
-    }
-
+    private final int rage =0;
+    
     public int getHeigth() {
         return heigth;
     }
