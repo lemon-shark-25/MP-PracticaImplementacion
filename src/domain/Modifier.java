@@ -7,13 +7,15 @@ package domain;
  */
 public abstract class Modifier {
 	private final String name;
+        private final String description;
 	private final int value;
         private final int type;
 
-	public Modifier(String n, int v, int t){
+	public Modifier(String n, String desc, int v, int t){
 		name = n;
 		value = v;
                 type = t;
+                description = desc;
 	}
 
 	public String getName() {
