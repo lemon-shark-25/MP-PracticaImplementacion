@@ -10,8 +10,8 @@ package domain;
  */
 public class Armor extends Equipment{
 	
-	public Armor(String n, int am, int dm) {
-		super(n, am, dm);
+	public Armor(String n, String desc, int am, int dm) {
+		super(n, desc, am, dm);
 	}
 	
 }
