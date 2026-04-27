@@ -1,21 +1,41 @@
 
 package domain;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
  *
- * @author Usuario
+ * @author Hugo Martínez González
  */
 public class HunterCharacterBuilder {
+    
+        private HashMap<String,Ability> ability;
+        private HashMap<String,Armor> armor;
+        private HashMap<String,Weapons> weapon;       
+        private Minion minion;
+        private HashMap<String,Strength> strength;
+        private HashMap<String,Weakness> weakness;
+
+    public HunterCharacterBuilder(HashMap<String,Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
+        this.ability = ability;
+        this.armor = armor;
+        this.weapon = weapon;
+        this.minion = minion;
+        this.strength = strength;
+        this.weakness = weakness;
+    }
     
     public Hunter hunterBuilder(){
         HunterCreator hunterCreator = new HunterCreator();
         Hunter hunter = hunterCreator.create();
         Scanner sc = new Scanner(System.in);
+        setName(hunter,sc);
+        setPower(hunter,sc);
+        hunter.setHealth(5);
     }
     
-    private setName(Hunter hunter, Scanner sc){
+    private void setName(Hunter hunter, Scanner sc){
         String name;
         do{
             System.out.print("Elige el nombre de tu personaje");
@@ -24,29 +44,42 @@ public class HunterCharacterBuilder {
         hunter.setName(name);
     }
     
-    private setPower(Hunter hunter, Scanner sc){
-        int power;
-        do{
-            try{
-                System.out.print("Elige el poder de tu personaje, debe estar entre 1 y 5");
-                power = Integer.parseInt(sc.nextLine());   
-            }catch (NumberFormatException e){   
-        }while(1);
-        hunter.setName(power);
-        }
+    private void setPower(Hunter hunter, Scanner sc) { 
+        int power; 
+        do {
+            try {
+                System.out.print("Elige el poder de tu personaje, debe estar entre 1 y 5: ");
+                power = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Introduce un número válido.");
+                power = 0; // Importante para que el while siga siendo verdadero
+            }
+        } while (power < 1 || power > 5); // REPETIR MIENTRAS SEA INCORRECTO
+        hunter.setPower(power);
     }
     
-}
-while (true) {
-    try {
-        System.out.print("Introduce salud (1-100): ");
-        salud = Integer.parseInt(sc.nextLine());
-        
-        if (salud >= 1 && salud <= 100) {
-            break; // Todo bien, salimos del bucle
-        } else {
-            System.out.println("Error: El número debe estar entre 1 y 100.");
-        }
-    } catch (NumberFormatException e) {
-        System.out.println("¡Eso no es un número! Por favor, introduce solo dígitos.");
+    private void setAbility(Hunter hunter, Scanner sc){
+        int number =1;
+    for (Ability ab: ability.values()){
+        System.out.print(number + "La habilidad se llama: " + ab.getName());
+        System.out.print("La descripción de las habilidades: " + ab.getDescription());
+    
+    
+    
     }
+
+
+
+
+// Suponiendo que tu HashMap se llama "habilidades"
+for (Ability ab : habilidades.values()) {
+    // Aquí ya tienes el objeto Ability, puedes llamar a sus métodos
+    ab.activarEfecto(); 
+    System.out.println("Procesando: " + ab.getNombre());
+}
+    }
+    
+
+    
+    
+}
