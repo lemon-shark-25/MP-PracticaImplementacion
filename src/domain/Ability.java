@@ -11,7 +11,7 @@ public abstract class Ability {
 	private final int attackValue;
         private final int defenseValue;
 
-	public Ability(String name, int attack, String description, int defense){
+	public Ability(String name, String description, int attack, int defense){
 		this.name = name;
 		attackValue = attack;
                 defenseValue = defense;
