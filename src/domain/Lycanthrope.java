@@ -1,8 +1,6 @@
 
 package domain;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 
 /**
  *
@@ -11,16 +9,10 @@ import java.util.LinkedList;
 public class Lycanthrope extends GameCharacter {
     private int heigth;
     private int weigth;
-    private int rage;
+    private final int rage;
 
-    public Lycanthrope(int heigth, int weigth, int rage, String name, 
-            int health, int power, Will will, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, 
-            Minion minion, LinkedList<Strength> strength, LinkedList<Weakness> weakness, 
-            Equipment principalArmor, Equipment principalWeapon) {
-        super(name, health, power, will, armor, weapon, minion, strength, weakness, principalArmor, principalWeapon);
-        this.heigth = heigth;
-        this.weigth = weigth;
-        this.rage = rage;
+    public Lycanthrope(){
+        this.rage = 0;
     }
 
     public int getHeigth() {
