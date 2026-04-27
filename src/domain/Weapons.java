@@ -12,8 +12,8 @@ package domain;
 public class Weapons extends Equipment{
 	private final boolean handNumber;	// False una mano, True dos manos
 	
-	public Weapons(String n, int am, int dm, boolean hn) {
-		super(n, am, dm);
+	public Weapons(String n, String desc, int am, int dm, boolean hn) {
+		super(n, desc, am, dm);
 		handNumber = hn;
 	}
 
