@@ -3,7 +3,6 @@ package domain;
 
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Arrays;
 
 /**
  *
@@ -85,11 +84,26 @@ public class HunterCharacterBuilder {
                 abilityNumber = Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Error: Introduce un número válido.");
-                abilityNumber = 0; 
+                abilityNumber = -1; 
             }
         } while (abilityNumber < 0 || abilityNumber > number-1);
         String name = inventary[abilityNumber];
         hunter.setAbility(ability.get(name)); 
+    }
+    
+    private void setMinion(Hunter hunter, Scanner sc){
+        int power; 
+        do {
+            try {
+                System.out.print("Elige el esbirro que tenga tu personaje:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano");
+                power = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Introduce un número válido.");
+                power = -1; 
+            }
+        } while (power < 0 || power > 3); 
+        hunter.setPower(power);
+        
     }
     
 }
