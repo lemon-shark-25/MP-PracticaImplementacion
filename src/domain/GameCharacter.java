@@ -2,7 +2,6 @@
 package domain;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
 /**
  *
@@ -17,8 +16,8 @@ public abstract class GameCharacter {
         private HashMap<String,Armor> armor;
         private HashMap<String,Weapons> weapon;       
         private Minion minion;
-        private LinkedList<Strength> strength;
-        private LinkedList<Weakness> weakness;
+        private HashMap<String, Strength> strength;
+        private HashMap<String, Weakness> weakness;
         private Equipment principalArmor;
         private Equipment principalWeapon;
         //Tal vez hay que crear una segunda variable de weapon si son dos armas de una mano o un array de 2 y comprobar si el pruimero y dependiendo de eso miras el segundo
@@ -58,11 +57,11 @@ public abstract class GameCharacter {
         return principalWeapon;
     }
     
-    public LinkedList<Strength> getStrength() {
+    public HashMap<String, Strength> getStrength() {
         return strength;
     }
 
-    public LinkedList<Weakness> getWeakness() {
+    public HashMap<String, Weakness> getWeakness() {
         return weakness;
     }
 
@@ -82,11 +81,11 @@ public abstract class GameCharacter {
         this.minion = minion;
     }
 
-    public void setStrength(LinkedList<Strength> strength) {
+    public void setStrength(HashMap<String, Strength> strength) {
         this.strength = strength;
     }
 
-    public void setWeakness(LinkedList<Weakness> weakness) {
+    public void setWeakness(HashMap<String, Weakness> weakness) {
         this.weakness = weakness;
     }
 
