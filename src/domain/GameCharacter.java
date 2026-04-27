@@ -10,9 +10,9 @@ import java.util.LinkedList;
  */
 public abstract class GameCharacter {
 
-	private final String name;	
-	private final int health;
-	private final int power;
+	private String name;	
+	private int health;
+	private int power;
         private Ability ability;
         private HashMap<String,Armor> armor;
         private HashMap<String,Weapons> weapon;       
@@ -23,19 +23,16 @@ public abstract class GameCharacter {
         private Equipment principalWeapon;
         //Tal vez hay que crear una segunda variable de weapon si son dos armas de una mano o un array de 2 y comprobar si el pruimero y dependiendo de eso miras el segundo
 
-    public GameCharacter(String name, int health, int power, Ability ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, LinkedList<Strength> strength, LinkedList<Weakness> weakness, Equipment principalArmor, Equipment principalWeapon) {
-        this.name = name;
-        this.health = health;
-        this.power = power;
-        this.ability = ability;
-        this.armor = armor;
-        this.weapon = weapon;
-        this.minion = minion;
-        this.strength = strength;
-        this.weakness = weakness;
-        this.principalArmor = principalArmor;
-        this.principalWeapon = principalWeapon;
-    }
+        public GameCharacter() {
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setHealth(int health) {
+            this.health = health;
+        }
         
 	public String getName() {
 		return name;
@@ -68,4 +65,41 @@ public abstract class GameCharacter {
     public LinkedList<Weakness> getWeakness() {
         return weakness;
     }
+
+    public void setAbility(Ability ability) {
+        this.ability = ability;
+    }
+
+    public void setArmor(HashMap<String, Armor> armor) {
+        this.armor = armor;
+    }
+
+    public void setWeapon(HashMap<String, Weapons> weapon) {
+        this.weapon = weapon;
+    }
+
+    public void setMinion(Minion minion) {
+        this.minion = minion;
+    }
+
+    public void setStrength(LinkedList<Strength> strength) {
+        this.strength = strength;
+    }
+
+    public void setWeakness(LinkedList<Weakness> weakness) {
+        this.weakness = weakness;
+    }
+
+    public void setPrincipalArmor(Equipment principalArmor) {
+        this.principalArmor = principalArmor;
+    }
+
+    public void setPrincipalWeapon(Equipment principalWeapon) {
+        this.principalWeapon = principalWeapon;
+    }
+    
+    public void setPower(int power){
+        this.power = power;
+    }
+    
 }
