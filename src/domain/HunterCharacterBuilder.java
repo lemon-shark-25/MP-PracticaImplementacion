@@ -11,10 +11,10 @@ import java.util.Scanner;
  */
 public class HunterCharacterBuilder {
     
-        private HashMap<String,Gift> ability;
+        private HashMap<String,Gift> ability;//ya
         private HashMap<String,Armor> armor;
         private HashMap<String,Weapons> weapon;       
-        private Minion minion;
+        private Minion minion;//ya
         private HashMap<String,Strength> strength;
         private HashMap<String,Weakness> weakness;
 
@@ -50,6 +50,7 @@ public class HunterCharacterBuilder {
     private void setAbility(Hunter hunter, Scanner sc){
         int number =0;
         String[] inventary = new String[5];
+        System.out.print("Elige una habilidad");
         for (Ability ab: ability.values()){
            System.out.print(number + "La habilidad se llama: " + ab.getName());
            System.out.print("La descripción de las habilidades: " + ab.getDescription());
@@ -102,6 +103,22 @@ public class HunterCharacterBuilder {
         }
     }
     
+    private HashMap<String,Strength> setStrength(Hunter hunter,Scanner sc){
+        System.out.print("Elige un conjunto de fortalezas");
+        do{
+            
+            for (Strength stre: strength.values()){
+           System.out.print(number + "La habilidad se llama: " + ab.getName());
+           System.out.print("La descripción de las habilidades: " + ab.getDescription());
+           inventary[number] = ab.getName();
+           number ++;
+           if (number==inventary.length){
+               inventary = java.util.Arrays.copyOf(inventary, inventary.length * 2);
+           }
+        }
+
+        }while
+    }
     private int requestNumber(String message, int min, int max, Scanner sc){
         int number =0;
         boolean proof;
