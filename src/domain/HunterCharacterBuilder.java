@@ -35,7 +35,7 @@ public class HunterCharacterBuilder {
         setPower(hunter,sc);
         hunter.setHealth(5);
         setAbility(hunter,sc);
-        setMinion(hunter,sc, true);
+        setMinion(hunter,sc,null);
         return hunter;
     }
     
@@ -63,12 +63,11 @@ public class HunterCharacterBuilder {
         hunter.setAbility(ability.get(name)); 
     }
     
-    private void setMinion(Hunter hunter, Scanner sc, boolean option){
+    private void setMinion(Hunter hunter, Scanner sc, Demon demon){
         String message;
-        if (option){
+        if (demon== null){
             message = "Elige el esbirro que quiere que tenga tu personaje:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
-        }else   message = "Elige el esbirro que tenga tu demonio:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
-
+        }else message = "Elige el esbirro que quiere que tenga tu demonio:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
         switch (requestNumber(message,0,3,sc)) {
             case 0:{
                 hunter.setMinion(null);
@@ -78,21 +77,27 @@ public class HunterCharacterBuilder {
                 String name = requestString("Elige el nombre del esbirro", sc);
                 int health = requestNumber("Elige la salud del esbirro",1,3,sc);
                 String pact = requestString("Describe la depndencia del esbirro",sc);
-                LinkedList<Minion> demonMinions = requestMinion()
+                Demon demonion = new Demon(name,health,hunter,pact,new LinkedList<Minion>());
+                setMinion(hunter,sc,demonion);
+                hunter.setMinion(demonion);
             }    
             case 2:{
                 String name = requestString("Elige el nombre del esbirro", sc);
                 int health = requestNumber("Elige la salud del esbirro",1,3,sc);
                 int dependence = requestNumber("Elige la dependencia del esbirro", 1,5,sc);
-                hunter.setMinion(new Ghoul(name,health, hunter,dependence));
+                if (demon == null){
+                    hunter.setMinion(new Ghoul(name,health, hunter,dependence));
+                }else demon.addMinion(new Ghoul(name,health, hunter,dependence));
                 break;
             }
             case 3:{
                 String name = requestString("Elige el nombre del esbirro", sc);
                 int health = requestNumber("Elige la salud del esbirro",1,3,sc);
                 String[] loyalty = {"ALTA", "MEDIA", "BAJA"};
-                hunter.setMinion(new Human(name,health, loyalty[requestNumber("Elige la lealtad del esbirro /n0)ALTA /n1)MEDIA /n2) BAJA", 0,2,sc)] ,hunter));
-                break;
+                if (demon == null){
+                    hunter.setMinion(new Human(name,health, loyalty[requestNumber("Elige la lealtad del esbirro /n0)ALTA /n1)MEDIA /n2) BAJA", 0,2,sc)] ,hunter));
+                }else demon.addMinion(new Human(name,health,loyalty[requestNumber("Elige la lealtad del esbirro /n0)ALTA /n1)MEDIA /n2) BAJA", 0,2,sc)] ,hunter));
+                    break;
             }                
         }
     }
@@ -120,10 +125,6 @@ public class HunterCharacterBuilder {
             name = sc.nextLine();
         }while(name.isBlank());
         return name;
-    }
-    
-    private LinkedList<Minion> requestMinion(Hunter hunter, Scanner sc, boolean validation){
-        
     }
    
 }
