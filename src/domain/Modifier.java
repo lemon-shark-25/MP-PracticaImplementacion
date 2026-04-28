@@ -29,4 +29,8 @@ public abstract class Modifier {
         public int getType(){
             return type;
         }
+        
+        public String getDescription(){
+            return description;
+        }
 }
