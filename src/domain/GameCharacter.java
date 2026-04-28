@@ -38,7 +38,11 @@ public abstract class GameCharacter {
 	}
 
 	public int getHealth() {
+            if (minion != null){
 		return health + minion.getHealth();
+            }else{
+                return health;
+            }
 	}
 
 	public int getPower() {
