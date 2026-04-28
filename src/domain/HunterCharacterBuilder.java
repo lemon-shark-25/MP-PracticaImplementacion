@@ -2,6 +2,7 @@
 package domain;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -34,35 +35,16 @@ public class HunterCharacterBuilder {
         setPower(hunter,sc);
         hunter.setHealth(5);
         setAbility(hunter,sc);
-        
-        
-        
-        
-        
+        setMinion(hunter,sc, true);
         return hunter;
     }
     
     private void setName(Hunter hunter, Scanner sc){
-        String name;
-        do{
-            System.out.print("Elige el nombre de tu personaje");
-            name = sc.nextLine();
-        }while(name.isBlank());
-        hunter.setName(name);
+        hunter.setName(requestString("Elige el nombre de tu personaje",sc));
     }
     
     private void setPower(Hunter hunter, Scanner sc) { 
-        int power; 
-        do {
-            try {
-                System.out.print("Elige el poder de tu personaje, debe estar entre 1 y 5: ");
-                power = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Introduce un número válido.");
-                power = 0; 
-            }
-        } while (power < 1 || power > 5); 
-        hunter.setPower(power);
+        hunter.setPower(requestNumber("Elige el poder de tu personaje, debe estar entre 1 y 5: ",1,5,sc));
     }
     
     private void setAbility(Hunter hunter, Scanner sc){
@@ -77,33 +59,71 @@ public class HunterCharacterBuilder {
                inventary = java.util.Arrays.copyOf(inventary, inventary.length * 2);
            }
         }
-        int abilityNumber;
-        do {
-            try {
-                System.out.print("Escoge la habilidad de tu personaje pulsando el número");
-                abilityNumber = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Introduce un número válido.");
-                abilityNumber = -1; 
-            }
-        } while (abilityNumber < 0 || abilityNumber > number-1);
-        String name = inventary[abilityNumber];
+        String name = inventary[requestNumber("Escoge la habilidad de tu personaje pulsando el número", 0, number-1, sc)];
         hunter.setAbility(ability.get(name)); 
     }
     
-    private void setMinion(Hunter hunter, Scanner sc){
-        int power; 
-        do {
-            try {
-                System.out.print("Elige el esbirro que tenga tu personaje:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano");
-                power = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Introduce un número válido.");
-                power = -1; 
+    private void setMinion(Hunter hunter, Scanner sc, boolean option){
+        String message;
+        if (option){
+            message = "Elige el esbirro que quiere que tenga tu personaje:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
+        }else   message = "Elige el esbirro que tenga tu demonio:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
+
+        switch (requestNumber(message,0,3,sc)) {
+            case 0:{
+                hunter.setMinion(null);
+                break;
             }
-        } while (power < 0 || power > 3); 
-        hunter.setPower(power);
-        
+            case 1: {
+                String name = requestString("Elige el nombre del esbirro", sc);
+                int health = requestNumber("Elige la salud del esbirro",1,3,sc);
+                String pact = requestString("Describe la depndencia del esbirro",sc);
+                LinkedList<Minion> demonMinions = requestMinion()
+            }    
+            case 2:{
+                String name = requestString("Elige el nombre del esbirro", sc);
+                int health = requestNumber("Elige la salud del esbirro",1,3,sc);
+                int dependence = requestNumber("Elige la dependencia del esbirro", 1,5,sc);
+                hunter.setMinion(new Ghoul(name,health, hunter,dependence));
+                break;
+            }
+            case 3:{
+                String name = requestString("Elige el nombre del esbirro", sc);
+                int health = requestNumber("Elige la salud del esbirro",1,3,sc);
+                String[] loyalty = {"ALTA", "MEDIA", "BAJA"};
+                hunter.setMinion(new Human(name,health, loyalty[requestNumber("Elige la lealtad del esbirro /n0)ALTA /n1)MEDIA /n2) BAJA", 0,2,sc)] ,hunter));
+                break;
+            }                
+        }
     }
     
+    private int requestNumber(String message, int min, int max, Scanner sc){
+        int number =0;
+        boolean proof;
+        do {
+            proof =false;
+            try {
+                System.out.print(message + "(" + min + "-" + max + ")");
+                number = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Introduce un número válido.");
+                proof = true;
+            }
+        } while (number < min || number > max || proof); 
+        return number;               
+    }
+        
+    private String requestString(String message, Scanner sc){
+        String name;
+        do{
+            System.out.print(message);
+            name = sc.nextLine();
+        }while(name.isBlank());
+        return name;
+    }
+    
+    private LinkedList<Minion> requestMinion(Hunter hunter, Scanner sc, boolean validation){
+        
+    }
+   
 }
