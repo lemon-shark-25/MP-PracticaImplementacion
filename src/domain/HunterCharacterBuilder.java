@@ -105,16 +105,21 @@ public class HunterCharacterBuilder {
     
     private HashMap<String,Strength> setStrength(Hunter hunter,Scanner sc){
         System.out.print("Elige un conjunto de fortalezas");
-        do{
-            
+        int number = 0;
+        String[] inventary = new String[5];
+        HashMap<String, Strength> strengthChoosen= new HashMap<>();
+        do{            
             for (Strength stre: strength.values()){
-           System.out.print(number + "La habilidad se llama: " + ab.getName());
-           System.out.print("La descripción de las habilidades: " + ab.getDescription());
-           inventary[number] = ab.getName();
+           System.out.print(number + "La habilidad se llama: " + stre.getName());
+           System.out.print("La descripción de las habilidades: " + stre.getDescription());
+           inventary[number] = stre.getName();
            number ++;
            if (number==inventary.length){
                inventary = java.util.Arrays.copyOf(inventary, inventary.length * 2);
            }
+           System.out.print(number+"Dejar de elegir fortalezas");
+           String name = inventary[requestNumber("",0,number-1,sc)];
+           strengthChoosen.put(name, strength.get(name));
         }
 
         }while
