@@ -8,7 +8,7 @@ package domain;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public abstract class Equipment {
+public abstract class Equipment implements Describable{
 	private final String name;
         private final String description;
 	private final int attackModifier;
@@ -21,6 +21,7 @@ public abstract class Equipment {
                 description = descript;
 	}
 
+        @Override
 	public String getName() {
 		return name;
 	}
@@ -33,6 +34,7 @@ public abstract class Equipment {
 		return defenseModifier;
 	}
 
+        @Override
         public String getDescription() {
             return description;
         }
