@@ -18,8 +18,8 @@ public abstract class GameCharacter {
         private Minion minion;
         private HashMap<String, Strength> strength;
         private HashMap<String, Weakness> weakness;
-        private Equipment principalArmor;
-        private Equipment principalWeapon;
+        private Armor principalArmor;
+        private HashMap<String,Weapons> principalWeapon;
         //Tal vez hay que crear una segunda variable de weapon si son dos armas de una mano o un array de 2 y comprobar si el pruimero y dependiendo de eso miras el segundo
 
         public GameCharacter() {
@@ -53,11 +53,11 @@ public abstract class GameCharacter {
         return ability;
     }
 
-    public Equipment getPrincipalArmor() {
+    public Armor getPrincipalArmor() {
         return principalArmor;
     }
 
-    public Equipment getPrincipalWeapon() {
+    public HashMap<String, Weapons> getPrincipalWeapon() {
         return principalWeapon;
     }
 
@@ -105,13 +105,14 @@ public abstract class GameCharacter {
         this.weakness = weakness;
     }
 
-    public void setPrincipalArmor(Equipment principalArmor) {
+    public void setPrincipalArmor(Armor principalArmor) {
         this.principalArmor = principalArmor;
     }
 
-    public void setPrincipalWeapon(Equipment principalWeapon) {
+    public void setPrincipalWeapon(HashMap<String, Weapons> principalWeapon) {
         this.principalWeapon = principalWeapon;
     }
+
     
     public void setPower(int power){
         this.power = power;
