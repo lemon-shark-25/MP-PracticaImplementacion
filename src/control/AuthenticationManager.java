@@ -4,13 +4,14 @@
  */
 package control;
 
-import interaction.Screen;
+import domain.User;
 
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public interface Mode {
-	public Mode showScreen();
-	public Mode doAction(char option);
+public class AuthenticationManager {
+	public User authenticate(String nick, String password){
+
+	}
 }

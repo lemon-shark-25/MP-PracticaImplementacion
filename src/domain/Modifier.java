@@ -5,7 +5,7 @@ package domain;
  *
  * @author Hugo Martínez González
  */
-public abstract class Modifier {
+public abstract class Modifier implements Describable {
 	private final String name;
         private final String description;
 	private final int value;
@@ -18,6 +18,7 @@ public abstract class Modifier {
                 description = desc;
 	}
 
+        @Override
 	public String getName() {
 		return name;
 	}
@@ -30,6 +31,7 @@ public abstract class Modifier {
             return type;
         }
         
+        @Override
         public String getDescription(){
             return description;
         }

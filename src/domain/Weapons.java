@@ -17,7 +17,7 @@ public class Weapons extends Equipment{
 		handNumber = hn;
 	}
 
-	public boolean isHandNumber() {
+	public boolean getHandNumber() {
 		return handNumber;
 	}
 	

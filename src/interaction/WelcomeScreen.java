@@ -11,23 +11,21 @@ import java.util.Set;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class UserScreen implements Screen{
+public class WelcomeScreen implements Screen{
 
 	private final Scanner scanner;
-	public UserScreen(Scanner s){
+	public WelcomeScreen(Scanner s){
 		this.scanner = s;
 	}
-
+	
 	@Override
 	public char showScreen(Set<Character> validOptions) {
 		System.out.println("""
-					[Menú Principal]
-                    Seleccione una de las siguientes opciones:
-                    a) Registrar personaje 
-                    b) Dar de baja personaje
-                    c) Desafiar usuario
-					d) Consultar oro
-					e) Consultar ranking global
+                     ¡Bienvenido a Simulador de Combate Fantástico!
+                     Seleccione una de las siguientes opciones:
+                     a) Iniciar sesión
+                     b) Crear cuenta
+                     c) Salir del juego
 		""");
 
 		while(true){
@@ -43,5 +41,4 @@ public class UserScreen implements Screen{
 			}
 		}
 	}	
-	
 }
