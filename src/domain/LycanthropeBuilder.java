@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
- * Constructor específico (Builder) para la raza Vampiro.
- * Recopila la información paso a paso y ensambla el objeto final.
- * * @author Miguel Pradillo Bartolomé
+ * Constructor específico (Builder) para la raza Licántropo.
+ * Adaptado a la implementación actual de la clase Lycanthrope.
+ * @author Miguel Pradillo Bartolomé
  */
-public class VampireBuilder implements CharacterBuilder {
+public class LycanthropeBuilder implements CharacterBuilder {
 
-    // --- Variables temporales para almacenar el estado antes de construir ---
+    // --- Variables temporales para almacenar el estado ---
     private String name;
     private int health;
     private int power;
-    private Discipline discipline; // Específico de vampiro
+    private Will will;
     
-    // Inicializamos las colecciones por defecto para evitar NullPointerExceptions
+    // Inicializamos colecciones por defecto
     private HashMap<String, Armor> armor = new HashMap<>();
     private HashMap<String, Weapons> weapon = new HashMap<>();
     private LinkedList<Strength> strength = new LinkedList<>();
@@ -26,16 +26,17 @@ public class VampireBuilder implements CharacterBuilder {
     private Equipment principalArmor;
     private Equipment principalWeapon;
 
-    // Atributos exclusivos del Vampiro
-    private int bloodPoints;
-    private int age;
+    // Atributos exclusivos del Licántropo
+    private int heigth;
+    private int weigth;
+    private int rage;
 
-    // --- Métodos de la interfaz CharacterBuilder ---
+    // --- Métodos de la interfaz genérica CharacterBuilder ---
 
     @Override
     public CharacterBuilder withName(String name) {
         this.name = name;
-        return this; // Devolvemos 'this' para permitir el encadenamiento (Fluent Interface)
+        return this;
     }
 
     @Override
@@ -47,11 +48,11 @@ public class VampireBuilder implements CharacterBuilder {
 
     @Override
     public CharacterBuilder withAbility(Ability ability) {
-        // Validación de regla de negocio: Un vampiro SOLO puede tener una Disciplina
-        if (ability instanceof Discipline) {
-            this.discipline = (Discipline) ability;
+        //
+        if (ability instanceof Will) {
+            this.will = (Will) ability;
         } else {
-            throw new IllegalArgumentException("Error: La habilidad de un Vampiro debe ser obligatoriamente una Disciplina.");
+            throw new IllegalArgumentException("Error: La clase Lycanthrope actual exige una habilidad de tipo Will.");
         }
         return this;
     }
@@ -93,15 +94,20 @@ public class VampireBuilder implements CharacterBuilder {
         return this;
     }
 
-    // --- Métodos ESPECÍFICOS del Vampiro (No están en la interfaz padre) ---
+    // --- Métodos específicos del Licántropo ---
 
-    public VampireBuilder withBloodPoints(int bloodPoints) {
-        this.bloodPoints = bloodPoints;
+    public LycanthropeBuilder withHeigth(int heigth) {
+        this.heigth = heigth;
         return this;
     }
 
-    public VampireBuilder withAge(int age) {
-        this.age = age;
+    public LycanthropeBuilder withWeigth(int weigth) {
+        this.weigth = weigth;
+        return this;
+    }
+
+    public LycanthropeBuilder withRage(int rage) {
+        this.rage = rage;
         return this;
     }
 
@@ -109,21 +115,19 @@ public class VampireBuilder implements CharacterBuilder {
 
     @Override
     public GameCharacter build() {
-        // Validaciones finales antes de crear (Opcional, pero muy recomendado)
+        // Validaciones de seguridad básicas
         if (this.name == null || this.name.isEmpty()) {
-            throw new IllegalStateException("No se puede crear un personaje sin nombre.");
+            throw new IllegalStateException("Error: No se puede crear un personaje sin nombre.");
         }
-        if (this.discipline == null) {
-            throw new IllegalStateException("No se puede crear un Vampiro sin su Disciplina asignada.");
+        if (this.will == null) {
+            throw new IllegalStateException("Error: No se ha asignado la habilidad (Will) al Licántropo.");
         }
 
-        // Aquí es donde llamamos al constructor de Vampire que creamos antes
-        return new Vampire(
-            name, health, power, discipline, 
-            armor, weapon, minion, 
-            strength, weakness, 
-            principalArmor, principalWeapon, 
-            bloodPoints, age
+        // Ensamblaje final llamando al constructor de Lycanthrope
+        return new Lycanthrope(
+            heigth, weigth, rage, name, health, power, will, 
+            armor, weapon, minion, strength, weakness, 
+            principalArmor, principalWeapon
         );
     }
 }

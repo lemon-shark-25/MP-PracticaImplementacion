@@ -14,7 +14,7 @@ public class Player extends User{
 	
 	public Player(String n, String nck, String p){
 		super(n, nck, p);
-		registerNumber = newRegisterNumber();
+		//registerNumber = newRegisterNumber();
 		gold = 0;
 	}
 

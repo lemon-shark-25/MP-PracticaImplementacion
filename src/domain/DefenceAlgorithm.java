@@ -15,10 +15,6 @@ public class DefenceAlgorithm implements Algorithm{
 <<<<<<< HEAD
 	public int execute(GameCharacter c) {
 		//push test	
-=======
-	public int execute(Character c) {
-
->>>>>>> feature/algoritmos
 	}
 	
 }

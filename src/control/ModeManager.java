@@ -11,7 +11,7 @@ package control;
 class ModeManager {
 
 	void start() {
-		Mode mode = new Mode();
+		//Mode mode = new Mode();
 	}
 	
 }
