@@ -19,7 +19,8 @@ public abstract class GameCharacter {
         private HashMap<String, Strength> strength;
         private HashMap<String, Weakness> weakness;
         private Armor principalArmor;
-        private HashMap<String,Weapons> principalWeapon;
+        private Weapons principalWeaponOne;
+        private Weapons principalWeaponTwo;
 
         public GameCharacter() {
         }
@@ -52,9 +53,15 @@ public abstract class GameCharacter {
         return principalArmor;
     }
 
-    public HashMap<String, Weapons> getPrincipalWeapon() {
-        return principalWeapon;
+    public Weapons getPrincipalWeaponOne() {
+        return principalWeaponOne;
     }
+
+    public Weapons getPrincipalWeaponTwo() {
+        return principalWeaponTwo;
+    }
+
+
 
     public HashMap<String, Armor> getArmor() {
         return armor;
@@ -104,11 +111,14 @@ public abstract class GameCharacter {
         this.principalArmor = principalArmor;
     }
 
-    public void setPrincipalWeapon(HashMap<String, Weapons> principalWeapon) {
-        this.principalWeapon = principalWeapon;
+    public void setPrincipalWeaponOne(Weapons principalWeaponOne) {
+        this.principalWeaponOne = principalWeaponOne;
     }
 
-    
+    public void setPrincipalWeaponTwo(Weapons principalWeaponTwo) {
+        this.principalWeaponTwo = principalWeaponTwo;
+    }
+  
     public void setPower(int power){
         this.power = power;
     }
