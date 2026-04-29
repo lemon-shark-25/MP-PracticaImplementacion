@@ -20,7 +20,6 @@ public abstract class GameCharacter {
         private HashMap<String, Weakness> weakness;
         private Armor principalArmor;
         private HashMap<String,Weapons> principalWeapon;
-        //Tal vez hay que crear una segunda variable de weapon si son dos armas de una mano o un array de 2 y comprobar si el pruimero y dependiendo de eso miras el segundo
 
         public GameCharacter() {
         }
@@ -38,12 +37,8 @@ public abstract class GameCharacter {
 	}
 
 	public int getHealth() {
-            if (minion != null){
-		return health + minion.getHealth();
-            }else{
                 return health;
-            }
-	}
+        }
 
 	public int getPower() {
 		return power;
@@ -117,5 +112,11 @@ public abstract class GameCharacter {
     public void setPower(int power){
         this.power = power;
     }
-    
+
+    public int getMinionHealth() {
+        if (minion != null){
+            return minion.getHealth();
+        }else return 0;
+    }
 }
+
