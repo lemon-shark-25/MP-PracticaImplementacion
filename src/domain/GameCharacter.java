@@ -60,6 +60,18 @@ public abstract class GameCharacter {
     public Equipment getPrincipalWeapon() {
         return principalWeapon;
     }
+
+    public HashMap<String, Armor> getArmor() {
+        return armor;
+    }
+
+    public HashMap<String, Weapons> getWeapon() {
+        return weapon;
+    }
+
+    public Minion getMinion() {
+        return minion;
+    }
     
     public HashMap<String, Strength> getStrength() {
         return strength;
