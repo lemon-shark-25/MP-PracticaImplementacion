@@ -6,6 +6,7 @@ package command;
 
 import control.AuthenticationManager;
 import control.GameContext;
+import control.UserManager;
 import domain.User;
 import interaction.AuthenticationScreen;
 import interaction.Screen;
@@ -18,6 +19,7 @@ public class AuthenticationCommand implements Command{
 
 	private final GameContext context;
 	private final AuthenticationScreen authScreen;
+	private final UserManager userManager;
 	private final AuthenticationManager authManager;
 	private final Screen successScreen;
 	private final Screen failureScreen;
@@ -25,13 +27,15 @@ public class AuthenticationCommand implements Command{
 	public AuthenticationCommand(
 			GameContext context,
 			AuthenticationScreen authScreen,
-			AuthenticationManager authService,
+			UserManager userManager,
+			AuthenticationManager authManager,
 			Screen successScreen,
 			Screen failureScreen) {
 
 		this.context = context;
 		this.authScreen = authScreen;
-		this.authManager = authService;
+		this.userManager = userManager;
+		this.authManager = authManager;
 		this.successScreen = successScreen;
 		this.failureScreen = failureScreen;
 	}
@@ -41,14 +45,15 @@ public class AuthenticationCommand implements Command{
 	public void execute() {
 		String[] credentials = authScreen.askCredentials();
 
-		User user = authManager.authenticate(credentials[0], credentials[1]);
-
-		if (user != null) {
-            context.setCurrentUser(user);
-            context.setNextScreen(successScreen);
-        } else {
-            context.setNextScreen(failureScreen);
-        }
+		if (authManager.login(credentials[0], credentials[1])){
+			User user = userManager.findByNick(credentials[0]);
+			if (user != null) {
+	            context.setCurrentUser(user);
+	            context.setNextScreen(successScreen);
+	        } else {
+	            context.setNextScreen(failureScreen);
+	        }
+		}
 	}
 	
 }

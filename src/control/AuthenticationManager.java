@@ -11,29 +11,15 @@ import domain.User;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class AuthenticationManager {
-	UserManager um;
+	private UserManager um;
 
-	public AuthenticationManager(){
-		um = new UserManager();
+	public AuthenticationManager(UserManager um){
+		this.um = um;
 	}
 
 	public boolean login(String nick, String password) {
 		User u = um.findByNick(nick);
-		if (u == null) {
-			return false;
-		}
+		if (u == null) return false;
 		return u.checkPassword(password);
-	}
-
-	public User getUser(String nick){
-		return um.findByNick(nick);
-	}
-
-	private void initializePasswordMap(){
-		
-	}
-
-	public void addUser(User u){
-		um.add(u);
 	}
 }
