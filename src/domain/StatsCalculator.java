@@ -5,7 +5,8 @@ public class StatsCalculator {
     private DefenseStrategy Algorithm;
 
 public  int calculatedamage(Character c) {
-
+        d=c.calculateDamage
+        return 
     }
 
 public  int calculatedefense(Character c) {

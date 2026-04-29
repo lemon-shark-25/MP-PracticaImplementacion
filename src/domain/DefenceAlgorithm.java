@@ -12,7 +12,7 @@ package domain;
 public class DefenceAlgorithm implements Algorithm{
 
 	@Override
-<<<<<<< HEAD
+
 	public int execute(GameCharacter c) {
 		//push test	
 	}
