@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public abstract class User implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private final String name;
 	private final String nick;
 	private final String password;

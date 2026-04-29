@@ -33,7 +33,7 @@ public class AuthenticationManager {
 		
 	}
 
-	public void addUser(String nick, String password){
-
+	public void addUser(User u){
+		um.add(u);
 	}
 }

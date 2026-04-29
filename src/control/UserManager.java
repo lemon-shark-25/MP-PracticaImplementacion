@@ -5,6 +5,13 @@
 package control;
 
 import domain.User;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,20 +20,44 @@ import java.util.Map;
  */
 public class UserManager {
 
+	private static final String FILE_NAME = "/usuarios.dat";
 	private Map<String, User> usuarios;
 
 	public UserManager(){
 		load();	
 	}
 
+	// ========= LOAD =========
+	@SuppressWarnings("unchecked")
 	public void load() {
-	
+		File file = new File(FILE_NAME);
 
+		if (!file.exists()) {
+			usuarios = new HashMap<>();
+			return;
+		}
+
+		try (ObjectInputStream ois = new ObjectInputStream(
+				new FileInputStream(file))) {
+
+			usuarios = (HashMap<String, User>) ois.readObject();
+
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			usuarios = new HashMap<>();
+		}
 	}
 
-    public void save() {
-	
+	// ========= SAVE =========
+	public void save() {
+		try (ObjectOutputStream oos = new ObjectOutputStream(
+				new FileOutputStream(FILE_NAME))) {
 
+			oos.writeObject(usuarios);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
     public User findByNick(String nick) {
