@@ -67,8 +67,8 @@ public class HunterCharacterBuilder {
     private void setMinion(Hunter hunter, Scanner sc, Demon demon){
         String message;
         if (demon== null){
-            message = "Elige el esbirro que quiere que tenga tu personaje:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
-        }else message = "Elige el esbirro que quiere que tenga tu demonio:/n 0) Ninguno/n1) Demonio /n 2) Ghoul /n 3) Humano";
+            message = "Elige el esbirro que quiere que tenga tu personaje:\n 0) Ninguno\n1) Demonio \n 2) Ghoul \n 3) Humano";
+        }else message = "Elige el esbirro que quiere que tenga tu demonio:\n 0) Ninguno\n1) Demonio \n 2) Ghoul \n 3) Humano";
         switch (requestNumber(message,0,3,sc)) {
             case 0:{
                 hunter.setMinion(null);
@@ -103,34 +103,49 @@ public class HunterCharacterBuilder {
         }
     }
     
-    private HashMap<String,Strength> setStrength(Hunter hunter,Scanner sc){
-        System.out.print("Elige un conjunto de fortalezas");
-        int number = 0;
+    private void setModifier(Hunter hunter,Scanner sc, boolean mode){
+        int election = 0;
         String[] inventary = new String[5];
-        HashMap<String, Strength> strengthChoosen= new HashMap<>();
-        do{            
-            for (Strength stre: strength.values()){
-           System.out.print(number + "La habilidad se llama: " + stre.getName());
-           System.out.print("La descripción de las habilidades: " + stre.getDescription());
-           inventary[number] = stre.getName();
-           number ++;
-           if (number==inventary.length){
-               inventary = java.util.Arrays.copyOf(inventary, inventary.length * 2);
-           }
-           System.out.print(number+"Dejar de elegir fortalezas");
-           String name = inventary[requestNumber("",0,number-1,sc)];
-           strengthChoosen.put(name, strength.get(name));
+        if(mode){
+            System.out.println("Elige un conjunto de fortalezas");
+            HashMap<String, Strength> modifierChoosen= new HashMap<>();
+            HashMap<String, Strength> cop = new HashMap<>(strength);
+        }else{
+            System.out.println("Elige un conjunto de debilidades");
+            HashMap<String, Weakness> modifierChoosen= new HashMap<>();
+            HashMap<String, Weakness> cop = new HashMap<>(weakness);
         }
-
-        }while
+        do{
+            int number = 0;
+            System.out.print(number+"Dejar de elegir fortalezas");
+            number ++;
+            for (Strength stre: cop.values()){
+                System.out.println(number + "La habilidad se llama: " + stre.getName());
+                System.out.println("La descripción de las habilidades: " + stre.getDescription());
+                inventary[number-1] = stre.getName();
+                number ++;
+                if (number-1==inventary.length){
+                    inventary = java.util.Arrays.copyOf(inventary, inventary.length * 2);
+                }
+            }
+            election = requestNumber("Selecciona",0,number-1,sc);
+            if (election == 0){
+               hunter.setStrength(modifierChoosen);
+            } else{
+               String name = inventary[election-1];
+               modifierChoosen.put(name, cop.get(name));
+               copy.remove(name);
+            }
+        }while (election!=0);    
     }
+    
     private int requestNumber(String message, int min, int max, Scanner sc){
         int number =0;
         boolean proof;
         do {
             proof =false;
             try {
-                System.out.print(message + "(" + min + "-" + max + ")");
+                System.out.println(message + "(" + min + "-" + max + ")");
                 number = Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Error: Introduce un número válido.");
@@ -143,7 +158,7 @@ public class HunterCharacterBuilder {
     private String requestString(String message, Scanner sc){
         String name;
         do{
-            System.out.print(message);
+            System.out.println(message);
             name = sc.nextLine();
         }while(name.isBlank());
         return name;
