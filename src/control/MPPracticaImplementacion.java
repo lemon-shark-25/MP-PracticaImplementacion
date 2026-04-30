@@ -4,12 +4,8 @@
  */
 package control;
 
-import command.AuthenticationCommand;
-import command.Command;
 import interaction.Screen;
 import interaction.WelcomeScreen;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**

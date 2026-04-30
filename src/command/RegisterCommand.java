@@ -4,49 +4,49 @@
  */
 package command;
 
+import control.AuthenticationManager;
+import control.AuthenticationMode;
 import control.GameContext;
+import control.MenuMode;
+import control.Mode;
 import control.UserManager;
 import domain.Administrator;
 import domain.Player;
 import domain.User;
-import interaction.MenuScreen;
 import interaction.RegisterErrorScreen;
 import interaction.RegisterScreen;
-import interaction.Screen;
 
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class RegisterCommand implements Command{
+	public class RegisterCommand implements Command{
 	private final GameContext context;
 	private final UserManager userManager;
 	private final RegisterScreen registerScreen;
-	private final Screen successScreen;
-	private final Screen failureScreen;
+	private final Mode successMode;
+	private final Mode failureMode;
 
 	public RegisterCommand(
 			GameContext context,
-			UserManager userManager) {
+			UserManager userManager,
+			AuthenticationManager authManager) {
 
 		this.context = context;
 		this.userManager = userManager;
 		this.registerScreen
 				= new RegisterScreen(context.getScanner());
 
-		this.successScreen = new MenuScreen();
-		this.failureScreen = new RegisterErrorScreen();
+		this.successMode = new MenuMode();
+		this.failureMode = new AuthenticationMode(new RegisterErrorScreen(), context, authManager, userManager);
 	}
 
 	@Override
 	public void execute() {
-		
 		String[] credentials = registerScreen.askCredentials();
-        String nick = credentials[0];
-        String password = credentials[1];
 
-        if (userManager.findByNick(nick) != null) {
-            context.setNextMode(failureScreen);
+        if (userManager.findByNick(credentials[1]) != null) {
+            context.setNextMode(failureMode);
             return;
         }
 
@@ -58,9 +58,10 @@ public class RegisterCommand implements Command{
 		}
 
         userManager.add(newUser);
+		userManager.save();
 
         context.setCurrentUser(newUser);
-        context.setNextMode(successScreen);
+        context.setNextMode(successMode);
 	}
 	
 }

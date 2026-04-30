@@ -43,12 +43,10 @@ public class AuthenticationMode implements Mode{
 				context,
 				new AuthenticationScreen(context.getScanner()),
 				userManager,
-				authManager,
-				new MenuScreen(),
-				new LoginErrorScreen()
+				authManager
 		));
 
-		commands.put('b', new RegisterCommand(context, userManager)); // o lo que tengas
+		commands.put('b', new RegisterCommand(context, userManager, authManager)); // o lo que tengas
 		commands.put('c', new ExitCommand(context));
 	}
 

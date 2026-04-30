@@ -5,11 +5,14 @@
 package command;
 
 import control.AuthenticationManager;
+import control.AuthenticationMode;
 import control.GameContext;
+import control.MenuMode;
+import control.Mode;
 import control.UserManager;
 import domain.User;
 import interaction.AuthenticationScreen;
-import interaction.Screen;
+import interaction.RegisterErrorScreen;
 
 /**
  *
@@ -21,23 +24,21 @@ public class AuthenticationCommand implements Command{
 	private final AuthenticationScreen authScreen;
 	private final UserManager userManager;
 	private final AuthenticationManager authManager;
-	private final Screen successScreen;
-	private final Screen failureScreen;
+	private final Mode successMode;
+	private final Mode failureMode;
 
 	public AuthenticationCommand(
 			GameContext context,
 			AuthenticationScreen authScreen,
 			UserManager userManager,
-			AuthenticationManager authManager,
-			Screen successScreen,
-			Screen failureScreen) {
+			AuthenticationManager authManager) {
 
 		this.context = context;
 		this.authScreen = authScreen;
 		this.userManager = userManager;
 		this.authManager = authManager;
-		this.successScreen = successScreen;
-		this.failureScreen = failureScreen;
+		this.successMode = new MenuMode();
+		this.failureMode = new AuthenticationMode(new RegisterErrorScreen(), context, authManager, userManager);
 	}
 
 
@@ -49,9 +50,9 @@ public class AuthenticationCommand implements Command{
 			User user = userManager.findByNick(credentials[0]);
 			if (user != null) {
 	            context.setCurrentUser(user);
-	            context.setNextMode(successScreen);
+	            context.setNextMode(successMode);
 	        } else {
-	            context.setNextMode(failureScreen);
+	            context.setNextMode(failureMode);
 	        }
 		}
 	}
