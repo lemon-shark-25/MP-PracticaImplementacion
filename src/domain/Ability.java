@@ -5,7 +5,7 @@ package domain;
  *
  * @author Hugo Martínez González
  */
-public abstract class Ability {
+public abstract class Ability implements Describable{
 	private final String name;
         private final String description;
 	private final int attackValue;
