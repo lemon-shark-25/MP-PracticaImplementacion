@@ -9,9 +9,9 @@ import control.UserManager;
 import domain.Administrator;
 import domain.Player;
 import domain.User;
-import interaction.AuthenticationScreen;
 import interaction.MenuScreen;
 import interaction.RegisterErrorScreen;
+import interaction.RegisterScreen;
 import interaction.Screen;
 
 /**
@@ -21,7 +21,7 @@ import interaction.Screen;
 public class RegisterCommand implements Command{
 	private final GameContext context;
 	private final UserManager userManager;
-	private final AuthenticationScreen registerScreen;
+	private final RegisterScreen registerScreen;
 	private final Screen successScreen;
 	private final Screen failureScreen;
 
@@ -32,7 +32,7 @@ public class RegisterCommand implements Command{
 		this.context = context;
 		this.userManager = userManager;
 		this.registerScreen
-				= new AuthenticationScreen(context.getScanner());
+				= new RegisterScreen(context.getScanner());
 
 		this.successScreen = new MenuScreen();
 		this.failureScreen = new RegisterErrorScreen();
@@ -46,7 +46,7 @@ public class RegisterCommand implements Command{
         String password = credentials[1];
 
         if (userManager.findByNick(nick) != null) {
-            context.setNextScreen(failureScreen);
+            context.setNextMode(failureScreen);
             return;
         }
 
@@ -60,7 +60,7 @@ public class RegisterCommand implements Command{
         userManager.add(newUser);
 
         context.setCurrentUser(newUser);
-        context.setNextScreen(successScreen);
+        context.setNextMode(successScreen);
 	}
 	
 }

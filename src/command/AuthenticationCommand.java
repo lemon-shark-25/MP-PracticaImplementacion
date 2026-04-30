@@ -49,9 +49,9 @@ public class AuthenticationCommand implements Command{
 			User user = userManager.findByNick(credentials[0]);
 			if (user != null) {
 	            context.setCurrentUser(user);
-	            context.setNextScreen(successScreen);
+	            context.setNextMode(successScreen);
 	        } else {
-	            context.setNextScreen(failureScreen);
+	            context.setNextMode(failureScreen);
 	        }
 		}
 	}
