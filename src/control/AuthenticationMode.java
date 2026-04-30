@@ -9,8 +9,6 @@ import command.Command;
 import command.ExitCommand;
 import command.RegisterCommand;
 import interaction.AuthenticationScreen;
-import interaction.LoginErrorScreen;
-import interaction.MenuScreen;
 import interaction.Screen;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +44,7 @@ public class AuthenticationMode implements Mode{
 				authManager
 		));
 
-		commands.put('b', new RegisterCommand(context, userManager, authManager)); // o lo que tengas
+		commands.put('b', new RegisterCommand(context, userManager, authManager)); 
 		commands.put('c', new ExitCommand(context));
 	}
 

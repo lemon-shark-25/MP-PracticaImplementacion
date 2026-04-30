@@ -25,7 +25,6 @@ public class AuthenticationCommand implements Command{
 	private final UserManager userManager;
 	private final AuthenticationManager authManager;
 	private final Mode successMode;
-	private final Mode failureMode;
 
 	public AuthenticationCommand(
 			GameContext context,
@@ -38,7 +37,6 @@ public class AuthenticationCommand implements Command{
 		this.userManager = userManager;
 		this.authManager = authManager;
 		this.successMode = new MenuMode();
-		this.failureMode = new AuthenticationMode(new RegisterErrorScreen(), context, authManager, userManager);
 	}
 
 
@@ -52,7 +50,7 @@ public class AuthenticationCommand implements Command{
 	            context.setCurrentUser(user);
 	            context.setNextMode(successMode);
 	        } else {
-	            context.setNextMode(failureMode);
+	            context.setNextMode(new AuthenticationMode(new RegisterErrorScreen(), context, authManager, userManager));
 	        }
 		}
 	}

@@ -18,7 +18,6 @@ public class ModeManager {
 	void start() {
 		while (currentMode != null){
 			currentMode = currentMode.showScreen();
-			
 		}
 	}
 	

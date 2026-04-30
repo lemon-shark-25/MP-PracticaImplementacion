@@ -25,7 +25,7 @@ import interaction.RegisterScreen;
 	private final UserManager userManager;
 	private final RegisterScreen registerScreen;
 	private final Mode successMode;
-	private final Mode failureMode;
+	private final AuthenticationManager authManager;
 
 	public RegisterCommand(
 			GameContext context,
@@ -36,13 +36,47 @@ import interaction.RegisterScreen;
 		this.userManager = userManager;
 		this.registerScreen
 				= new RegisterScreen(context.getScanner());
-
+		this.authManager = authManager;
 		this.successMode = new MenuMode();
-		this.failureMode = new AuthenticationMode(new RegisterErrorScreen(), context, authManager, userManager);
 	}
 
 	@Override
 	public void execute() {
+		
+		String[] credentials = registerScreen.askCredentials();
+
+        String tipo = credentials[0].trim().toUpperCase(); // "A" o "J"
+        String name = credentials[1].trim();
+        String nick = credentials[2].trim();
+        String password = credentials[3];
+
+        // Validación mínima del tipo
+        if (!tipo.equals("A") && !tipo.equals("J")) {
+            goToRegisterError();
+            return;
+        }
+
+        // Nick repetido
+        if (userManager.findByNick(nick) != null) {
+            goToRegisterError();
+            return;
+        }
+
+		User newUser;
+        if (tipo.equals("A")) {
+            newUser = new Administrator(name, nick, password);
+        } else {
+            newUser = new Player(name, nick, password);
+        }
+
+        userManager.add(newUser);
+        userManager.save(); // 👈 persistencia inmediata
+
+        context.setCurrentUser(newUser);
+        context.setNextMode(successMode);
+
+		
+/*
 		String[] credentials = registerScreen.askCredentials();
 
         if (userManager.findByNick(credentials[1]) != null) {
@@ -62,6 +96,18 @@ import interaction.RegisterScreen;
 
         context.setCurrentUser(newUser);
         context.setNextMode(successMode);
+*/
 	}
+
+	
+	private void goToRegisterError() {
+        context.setNextMode(new AuthenticationMode(
+                new RegisterErrorScreen(), 
+                context,
+                authManager,
+                userManager
+        ));
+    }
+
 	
 }
