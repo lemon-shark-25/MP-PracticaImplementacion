@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package domain;
-
+import java.util.Iterator;
 /**
  * Algoritmo de daño. Implementa el patrón
  *
@@ -37,6 +37,21 @@ public class DamageAlgorithm implements Algorithm{
 
                 }
             }
+
+            //values accede a la columa derecha de la lista, 
+            //el iterador no puede iterar respecto a una lista de más
+            //de una columna.
+        Iterator<Strength> it = c.getStrength().values().iterator();
+        while (it.hasNext()) {
+            // dmg+=((Strength) it.next()).getValue();
+            dmg+=it.next().getValue();
+        }
+        Iterator<Weakness> it1 = c.getWeakness().values().iterator();
+        while (it1.hasNext()) {
+            // dmg+=((Strength) it.next()).getValue();
+            dmg-=it1.next().getValue();
+        }
+        
         return dmg;
     }
 	}
