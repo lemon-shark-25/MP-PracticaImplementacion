@@ -34,5 +34,20 @@ public abstract class User implements Serializable{
 		return this.password.equals(pass);
 	}
 
-		
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof User)) {
+			return false;
+		}
+		User user = (User) o;
+		return nick.equals(user.nick);
+	}
+
+	@Override
+	public int hashCode() {
+		return nick.hashCode();
+	}
 }

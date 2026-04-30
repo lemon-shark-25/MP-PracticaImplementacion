@@ -10,11 +10,10 @@ import java.util.Scanner;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class AuthenticationScreen{
-
+public class LoginScreen {
 	private final Scanner scanner;
 
-	public AuthenticationScreen(Scanner s){
+	public LoginScreen(Scanner s){
 		this.scanner = s;
 	}
 
@@ -30,6 +29,5 @@ public class AuthenticationScreen{
 		String[] credentials = {nick, password};
 
 		return credentials;
-	}
-	
+	}	
 }
