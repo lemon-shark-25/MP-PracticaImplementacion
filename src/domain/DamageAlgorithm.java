@@ -13,7 +13,18 @@ public class DamageAlgorithm implements Algorithm{
 
 	@Override
 	public int execute(GameCharacter c) {
-		return 0;
+        int dmg = 0;
+
+
+            if (c instanceof Hunter) {
+        
+            } else if (c instanceof Lycanthrope) {
+            
+            } else if (c instanceof Vampire) {
+            
+            }
+        return dmg;
+    }
 	}
 	
-}
+

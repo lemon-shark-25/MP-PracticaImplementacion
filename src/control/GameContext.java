@@ -13,6 +13,7 @@ import domain.User;
 public class GameContext {
 	private User currentUser;
 	private Mode nextMode;
+    private Character[] characters;
 
 	public User getCurrentUser() {
 		return currentUser;

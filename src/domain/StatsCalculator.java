@@ -5,8 +5,7 @@ public class StatsCalculator {
     private DefenseStrategy Algorithm;
 
 public  int calculatedamage(Character c) {
-        d=c.calculateDamage
-        return 
+
     }
 
 public  int calculatedefense(Character c) {
@@ -20,6 +19,9 @@ public void setdamagestrategy(Algorithm a) {
 public void setdefencestrategy(Algorithm a) {
 
     }
+public StatsCalculator{
+    this.DamageStrategy= new DamageAlgorithm;
+    this.DefenceAlgorithm= new DefenceAlgorithm;
+    }
+}
 
-}
-}
