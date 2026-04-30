@@ -4,8 +4,15 @@
  */
 package control;
 
+import command.AuthenticationCommand;
 import command.Command;
+import command.ExitCommand;
+import command.RegisterCommand;
+import interaction.AuthenticationScreen;
+import interaction.LoginErrorScreen;
+import interaction.MenuScreen;
 import interaction.Screen;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,11 +22,36 @@ import java.util.Map;
 public class AuthenticationMode implements Mode{
 	private final Screen screen;
     private final GameContext context;
-	
-	public AuthenticationMode(Screen screen, GameContext context) {
-    	this.screen = screen;
-	    this.context = context;
+    private final AuthenticationManager authManager;
+    private final UserManager userManager;
+    private Map<Character, Command> commands;
+
+    public AuthenticationMode(Screen screen, GameContext context,
+                              AuthenticationManager authManager,
+                              UserManager userManager) {
+        this.screen = screen;
+        this.context = context;
+        this.authManager = authManager;
+        this.userManager = userManager;
+        initCommands();
+    }
+
+	private void initCommands() {
+		commands = new HashMap<>();
+
+		commands.put('a', new AuthenticationCommand(
+				context,
+				new AuthenticationScreen(context.getScanner()), // ojo: context debe tener scanner
+				userManager,
+				authManager,
+				new MenuScreen(),
+				new LoginErrorScreen()
+		));
+
+		commands.put('b', new RegisterCommand(context, userManager)); // o lo que tengas
+		commands.put('c', new ExitCommand(context));
 	}
+
 
 	@Override
 	public Mode showScreen() {

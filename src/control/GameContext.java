@@ -5,6 +5,8 @@
 package control;
 
 import domain.User;
+import interaction.Screen;
+import java.util.Scanner;
 
 /**
  * Implementa el patrón Decorator
@@ -13,6 +15,11 @@ import domain.User;
 public class GameContext {
 	private User currentUser;
 	private Mode nextMode;
+	private final Scanner scanner;
+
+	public GameContext(Scanner s){
+		scanner = s;
+	}
 
 	public User getCurrentUser() {
 		return currentUser;
@@ -28,6 +35,14 @@ public class GameContext {
 
 	public void setNextMode(Mode mode) {
 		nextMode = mode;	
+	}
+
+	public void setNextScreen(Screen successScreen) {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	}
+
+	Scanner getScanner() {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 
 }

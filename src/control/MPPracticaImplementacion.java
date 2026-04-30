@@ -4,8 +4,12 @@
  */
 package control;
 
-import interaction.AuthenticationScreen;
+import command.AuthenticationCommand;
+import command.Command;
 import interaction.Screen;
+import interaction.WelcomeScreen;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -18,9 +22,26 @@ public class MPPracticaImplementacion {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		Scanner s = new Scanner();
-		Screen screen = new AuthenticationScreen(s);
-		Mode initialMode = new AuthenticationMode(screen, context);
+		
+		Scanner s = new Scanner(System.in);
+
+	    UserManager userManager = new UserManager();
+	    AuthenticationManager authManager = new AuthenticationManager(userManager);
+	
+	    GameContext context = new GameContext(s);
+	    Screen screen = new WelcomeScreen(s);
+
+	    Mode initialMode = new AuthenticationMode(screen, context, authManager, userManager);
+	    new ModeManager(initialMode).start();
+	
+    	userManager.save(); // guardar al salir
+
+/*	
+		Scanner s = new Scanner(System.in);
+		Screen screen = new WelcomeScreen(s);
+		GameContext context = new GameContext();
+		
+*/
 		ModeManager mm = new ModeManager(initialMode);
 
 		mm.start();

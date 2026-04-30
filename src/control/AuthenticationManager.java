@@ -11,7 +11,7 @@ import domain.User;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class AuthenticationManager {
-	private UserManager um;
+	private final UserManager um;
 
 	public AuthenticationManager(UserManager um){
 		this.um = um;
