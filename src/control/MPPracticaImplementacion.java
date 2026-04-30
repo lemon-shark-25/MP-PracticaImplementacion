@@ -35,16 +35,6 @@ public class MPPracticaImplementacion {
 	    new ModeManager(initialMode).start();
 	
     	userManager.save(); // guardar al salir
-
-/*	
-		Scanner s = new Scanner(System.in);
-		Screen screen = new WelcomeScreen(s);
-		GameContext context = new GameContext();
-		
-*/
-		ModeManager mm = new ModeManager(initialMode);
-
-		mm.start();
 	}
 	
 }

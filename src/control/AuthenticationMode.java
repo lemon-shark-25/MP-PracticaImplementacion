@@ -41,7 +41,7 @@ public class AuthenticationMode implements Mode{
 
 		commands.put('a', new AuthenticationCommand(
 				context,
-				new AuthenticationScreen(context.getScanner()), // ojo: context debe tener scanner
+				new AuthenticationScreen(context.getScanner()),
 				userManager,
 				authManager,
 				new MenuScreen(),

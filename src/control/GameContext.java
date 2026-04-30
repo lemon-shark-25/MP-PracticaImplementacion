@@ -41,8 +41,8 @@ public class GameContext {
 		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 
-	Scanner getScanner() {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	public Scanner getScanner() {
+		return scanner;
 	}
 
 }

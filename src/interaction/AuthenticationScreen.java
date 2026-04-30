@@ -19,6 +19,8 @@ public class AuthenticationScreen{
 	}
 
 	public String[] askCredentials() {
+		System.out.println("Introduzca sus credenciales");
+		
 		System.out.print("Nick: ");
 		String nick = scanner.nextLine();
 

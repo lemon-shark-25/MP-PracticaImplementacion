@@ -21,7 +21,7 @@ public class UserScreen implements Screen{
 	@Override
 	public char showScreen(Set<Character> validOptions) {
 		System.out.println("""
-					[Menú Principal]
+					[Menu Principal]
                     Seleccione una de las siguientes opciones:
                     a) Registrar personaje 
                     b) Dar de baja personaje
@@ -31,7 +31,7 @@ public class UserScreen implements Screen{
 		""");
 
 		while(true){
-		System.out.print("Opción:");
+		System.out.print("Opcion:");
 		String input = scanner.nextLine().trim().toLowerCase();
 
 			if (!input.isEmpty()){
@@ -39,7 +39,7 @@ public class UserScreen implements Screen{
 				if (validOptions.contains(choice)){
 					return choice;
 				}
-				System.out.println("Opción inválida.");
+				System.out.println("Opcion invalida.");
 			}
 		}
 	}	
