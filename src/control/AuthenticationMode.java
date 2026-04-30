@@ -14,16 +14,10 @@ import java.util.Map;
  */
 public class AuthenticationMode implements Mode{
 	private final Screen screen;
-    private final Map<Character, Command> commands;
     private final GameContext context;
 	
-	public AuthenticationMode(
-        Screen screen,
-        Map<Character, Command> commands,
-        GameContext context) {
-
+	public AuthenticationMode(Screen screen, GameContext context) {
     	this.screen = screen;
-    	this.commands = commands;
 	    this.context = context;
 	}
 
