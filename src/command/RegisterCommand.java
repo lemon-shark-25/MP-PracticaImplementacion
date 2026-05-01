@@ -40,7 +40,7 @@ import java.util.Set;
 		this.registerScreen
 				= new RegisterScreen(context.getScanner());
 		this.authManager = authManager;
-		this.successMode = new MenuMode(new MenuScreen(context), context);
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager);
 	}
 
 	@Override
