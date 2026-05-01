@@ -13,6 +13,7 @@ import control.UserManager;
 import domain.Administrator;
 import domain.Player;
 import domain.User;
+import interaction.MenuScreen;
 import interaction.RegisterErrorScreen;
 import interaction.RegisterScreen;
 import interaction.WelcomeScreen;
@@ -39,7 +40,7 @@ import java.util.Set;
 		this.registerScreen
 				= new RegisterScreen(context.getScanner());
 		this.authManager = authManager;
-		this.successMode = new MenuMode();
+		this.successMode = new MenuMode(new MenuScreen(context), context);
 	}
 
 	@Override
