@@ -8,13 +8,13 @@ package domain;
  * @author Hugo Martínez González
  */
 public class Lycanthrope extends GameCharacter {
-    private int heigth;
-    private int weigth;
+    private int height;
+    private int weight;
     private final int rage =0;
     private boolean mode;
     
     public int getHeigth() {
-        return heigth;
+        return height;
     }
 
     public boolean isMode() {
@@ -22,19 +22,19 @@ public class Lycanthrope extends GameCharacter {
     }
 
     public int getWeigth() {
-        return weigth;
+        return weight;
     }
 
     public int getRage() {
         return rage;
     }
 
-    public void setHeigth(int heigth) {
-        this.heigth = heigth;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public void setWeigth(int weigth) {
-        this.weigth = weigth;
+    public void setWeight (int weight) {
+        this.weight = weight;
     }
     
     @Override
@@ -44,11 +44,13 @@ public class Lycanthrope extends GameCharacter {
     
     public void Transformation(){
         if (!isMode()){
-            setHeigth(heigth+75);
-            setWeigth(weigth+100); 
+            setHeight(height+75);
+            setWeight(weight+100);
+            mode = true;
         }else{
-            setHeigth(heigth-75);
-            setWeigth(weigth-100);
+            setHeight(height-75);
+            setWeight(weight-100);
+            mode = false;
         }
     }
 }
