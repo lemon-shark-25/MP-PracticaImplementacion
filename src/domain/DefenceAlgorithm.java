@@ -4,17 +4,54 @@
  */
 package domain;
 
+import java.util.Iterator; // Add necessary imports
+
 /**
- * Algoritmo de daño. Implementa el patrón
+ * Algoritmo de defensa. Implementa el patrón
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class DefenceAlgorithm implements Algorithm{
+public class DefenceAlgorithm implements Algorithm {
+    
+    @Override
+    public int execute(GameCharacter c) {
 
-	@Override
+        int def = c.getPower()+c.getAbility().getDefenseValue()+
+        c.getPrincipalArmor().getDefenseModifier();
 
-	public int execute(GameCharacter c) {
-		//push test	
-	}
-	
+            if (c instanceof Hunter) {
+
+                def+=((Hunter) c).getAttitude();
+
+            } else if (c instanceof Lycanthrope) {
+                Lycanthrope lycan = (Lycanthrope) c;
+                if (lycan.getRage() >= lycan.getAbility().getRageValue()) {
+                    def += lycan.getAbility().getDefenseValue();
+                }
+                def += lycan.getRage();
+
+            } else if (c instanceof Vampire) {
+                if (((Vampire) c).getBloodPoints()>=5){ 
+                    def+=2;
+                }
+            }
+
+            //values accede a la columa derecha de la lista, 
+            //el iterador no puede iterar respecto a una lista de más
+            //de una columna.
+        Iterator<Strength> it = c.getStrength().values().iterator();
+        while (it.hasNext()) {
+            // def+=((Strength) it.next()).getValue();
+            def+=it.next().getValue();
+        }
+        Iterator<Weakness> it1 = c.getWeakness().values().iterator();
+        while (it1.hasNext()) {
+            // def+=((Strength) it.next()).getValue();
+            def-=it1.next().getValue();
+        }
+        
+        return def;
+    }
 }
+
+

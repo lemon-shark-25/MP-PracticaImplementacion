@@ -23,10 +23,13 @@ public class DamageAlgorithm implements Algorithm{
                 dmg+=((Hunter) c).getAttitude();
 
             } else if (c instanceof Lycanthrope) {
-                
-                if (((Lycanthrope) c).getRage()< ((Lycanthrope) c).getAbility().getRageValue())
-
-                dmg-=c.getAbility().getAttackValue();
+                Lycanthrope lycan = (Lycanthrope) c;
+                if (lycan.getRage() >= lycan.getAbility().getRageValue()) {
+                    dmg += lycan.getRage();
+                } else {
+                    dmg -= c.getAbility().getAttackValue();
+                    dmg += lycan.getRage();
+                }
 
             } else if (c instanceof Vampire) {
 
