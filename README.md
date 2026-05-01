@@ -22,8 +22,12 @@ Dependencias para correr el proyecto:
 - JDK 21.0.10 (Oracle): recomendamos instalarlo a través a través del ejecutable (.exe), porque así se asignan las variables de entorno automáticamente.
 - Uno de los siguientes:
   - Apache Netbeans: en este caso bastará con abrir el proyecto desde Netbeans y ejecutarlo asegurandose de que el JDK utilizado es la versión especificada anteriormente. Para ello se hace click derecho sobre el nombre del proyecto y se busca la opción Propiedades > Librerias > Plataforma Java y se selecciona la correspondiente.
-  - Apache Ant 1.10.17: INCLUIR MÉTODO DE INSTALACIÓN
-
+  - Apache Ant 1.10.17: podemos encontrar las instrucciones de instalación aquí: https://ant.apache.org/manual/install.html
+  Resumen:
+  1. Descargar los binarios adecuados para cada plataforma.
+  2. Asumiendo Windows, descomprime el archivo en una carpeta que no necesite privilegios de edición, por ejemplo ``C:\ant`` o ``C:\Program Files\ant``
+  3. Ajustar las variables de entorno apropiadamente. JAVA_HOME a nuestro entorno de Java (probablemente ``C:\Program Files\Java\jdk-21.0.10``) y añadir %ANT_HOME%\bin al PATH. 
+  4. Y correr ``ant -f fetch.xml -Ddest=system`` en ANT_HOME para descargar todas las dependencias de Ant.
 
 ## Integración Continua
 
