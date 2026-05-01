@@ -13,6 +13,7 @@ import control.UserManager;
 import domain.User;
 import interaction.AuthenticationScreen;
 import interaction.LoginErrorScreen;
+import interaction.MenuScreen;
 import interaction.RegisterErrorScreen;
 import interaction.WelcomeScreen;
 import java.util.Set;
@@ -39,7 +40,7 @@ public class AuthenticationCommand implements Command{
 		this.authScreen = authScreen;
 		this.userManager = userManager;
 		this.authManager = authManager;
-		this.successMode = new MenuMode();
+		this.successMode = new MenuMode(new MenuScreen(context), context);
 	}
 
 

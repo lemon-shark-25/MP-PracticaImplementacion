@@ -4,6 +4,10 @@
  */
 package interaction;
 
+import control.GameContext;
+import domain.Player;
+import domain.User;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -12,9 +16,41 @@ import java.util.Set;
  */
 public class MenuScreen implements Screen {
 
+	private final GameContext context;
+	public MenuScreen(GameContext c){
+		this.context = c;
+	}
+
 	@Override
 	public char showScreen(Set<Character> validOptions) {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		System.out.println("[Menu Principal]");
+		if (context.getCurrentUser() != null){
+			System.out.println("Usuario: " + context.getCurrentUser().getNick());
+			if (context.getCurrentUser() instanceof Player player) System.out.println("Oro: " + player.getGold());
+		}
+        System.out.println("""
+                     Seleccione una de las siguientes opciones:
+                     a) Lanzar desafio
+                     b) Aceptar desafio
+                     c) Registrar personaje
+                     d) Editar personaje
+                     e) Consultar clasificacion
+                     f) Darse de baja
+                     g) Salir
+		""");
+
+		while (true) {
+			System.out.print("Opcion:");
+			String input = context.getScanner().nextLine().trim().toLowerCase();
+
+			if (!input.isEmpty()) {
+				char choice = input.charAt(0);
+				if (validOptions.contains(choice)) {
+					return choice;
+				}
+				System.out.println("Opcion invalida.");
+			}
+		}
 	}
 	
 }
