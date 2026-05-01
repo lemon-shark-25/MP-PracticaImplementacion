@@ -15,7 +15,7 @@ import interaction.WelcomeScreen;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class UnregisterCommand implements Command{
+public class UnregisterCommand implements Command {
 
 	
 	private final GameContext context;
