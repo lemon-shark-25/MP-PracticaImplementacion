@@ -61,7 +61,7 @@ public class AuthenticationMode implements Mode{
 
 		if (command == null) {
 			throw new IllegalStateException(
-					"Ningún comando asociado con esta opción: " + option
+					"Ningun comando asociado con esta opcion: " + option
 			);
 		}
 

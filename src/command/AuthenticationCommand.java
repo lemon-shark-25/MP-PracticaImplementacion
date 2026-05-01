@@ -12,7 +12,10 @@ import control.Mode;
 import control.UserManager;
 import domain.User;
 import interaction.AuthenticationScreen;
+import interaction.LoginErrorScreen;
 import interaction.RegisterErrorScreen;
+import interaction.WelcomeScreen;
+import java.util.Set;
 
 /**
  *
@@ -50,8 +53,19 @@ public class AuthenticationCommand implements Command{
 	            context.setCurrentUser(user);
 	            context.setNextMode(successMode);
 	        } else {
-	            context.setNextMode(new AuthenticationMode(new RegisterErrorScreen(context.getScanner()), context, authManager, userManager));
+	            context.setNextMode(new AuthenticationMode(new LoginErrorScreen(context.getScanner()), context, authManager, userManager));
 	        }
+		} else {
+			// Muestras la pantalla de error
+    		new RegisterErrorScreen(context.getScanner()).showScreen(Set.of());
+
+    		// Vuelves al menú de selección (AuthenticationMode)
+    		context.setNextMode(new AuthenticationMode(
+            	new WelcomeScreen(context.getScanner()),
+            	context,
+            	authManager,
+            	userManager
+    		));
 		}
 	}
 	

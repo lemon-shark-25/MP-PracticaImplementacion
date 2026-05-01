@@ -4,6 +4,7 @@
  */
 package interaction;
 
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -11,10 +12,20 @@ import java.util.Set;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class LoginErrorScreen implements Screen{
+	private final Scanner scanner;
+
+	public LoginErrorScreen(Scanner scanner) {
+		this.scanner = scanner;
+	}
 
 	@Override
 	public char showScreen(Set<Character> validOptions) {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		System.out.println("Error al iniciar sesion.");
+		System.out.println("Pulse ENTER para volver.");
+
+		scanner.nextLine();
+
+		return 0;
 	}
 	
 }
