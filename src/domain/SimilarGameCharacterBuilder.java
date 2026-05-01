@@ -60,7 +60,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         characterr.setAbility(ability.get(name)); 
     }
     
-    private void setMinion(GameCharacter characterr, Scanner sc, Demon demon){//revisar la logica muy bien
+    protected void setMinion(GameCharacter characterr, Scanner sc, Demon demon){//revisar la logica muy bien
         String message;
         if (demon== null){
             message = "Elige el esbirro que quiere que tenga tu personaje:\n 0) Ninguno\n1) Demonio \n 2) Ghoul \n 3) Humano";
@@ -192,7 +192,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         }   
     }
         
-    private int requestNumber(String message, int min, int max, Scanner sc){
+    protected int requestNumber(String message, int min, int max, Scanner sc){
         int number =0;
         boolean proof;
         do {
@@ -208,7 +208,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         return number;               
     }
         
-    private String requestString(String message, Scanner sc){
+    protected String requestString(String message, Scanner sc){
         String name;
         do{
             System.out.println(message);
@@ -217,7 +217,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         return name;
     }
     
-    private String[] showOptions(HashMap<String, ? extends Describable> options, Scanner sc, boolean mode, String message){
+    protected String[] showOptions(HashMap<String, ? extends Describable> options, Scanner sc, boolean mode, String message){
         LinkedList<String> inventary = new LinkedList<>();
         int number = 0; 
         if (mode){
