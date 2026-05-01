@@ -5,7 +5,6 @@
 package control;
 
 import domain.User;
-import interaction.Screen;
 import java.util.Scanner;
 
 /**

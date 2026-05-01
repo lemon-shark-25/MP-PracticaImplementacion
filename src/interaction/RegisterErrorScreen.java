@@ -4,6 +4,7 @@
  */
 package interaction;
 
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -12,9 +13,19 @@ import java.util.Set;
  */
 public class RegisterErrorScreen implements Screen{
 
+	private final Scanner scanner;
+
+	public RegisterErrorScreen(Scanner scanner) {
+		this.scanner = scanner;
+	}
+
 	@Override
 	public char showScreen(Set<Character> validOptions) {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		System.out.println("Error en el registro del nuevo usuario.");
+		System.out.println("Pulse ENTER para volver.");
+
+		scanner.nextLine();
+
+		return 0;
 	}
-	
 }

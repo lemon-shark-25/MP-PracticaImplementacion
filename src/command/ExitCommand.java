@@ -11,14 +11,16 @@ import control.GameContext;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class ExitCommand implements Command{
+	private final GameContext context;
 
 	public ExitCommand(GameContext context){
-
+		this.context = context;
 	}
 
 	@Override
 	public void execute() {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		System.out.println("Cerrando programa.");
+		context.setNextMode(null);
 	}
 	
 }

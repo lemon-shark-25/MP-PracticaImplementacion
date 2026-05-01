@@ -12,7 +12,8 @@ public class MenuMode implements Mode{
 
 	@Override
 	public Mode showScreen() {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		System.out.println("Correcto");
+		return this;
 	}
 
 	@Override

@@ -15,6 +15,8 @@ import domain.Player;
 import domain.User;
 import interaction.RegisterErrorScreen;
 import interaction.RegisterScreen;
+import interaction.WelcomeScreen;
+import java.util.Set;
 
 /**
  *
@@ -70,44 +72,22 @@ import interaction.RegisterScreen;
         }
 
         userManager.add(newUser);
-        userManager.save(); // 👈 persistencia inmediata
+        userManager.save(); 
 
         context.setCurrentUser(newUser);
         context.setNextMode(successMode);
-
-		
-/*
-		String[] credentials = registerScreen.askCredentials();
-
-        if (userManager.findByNick(credentials[1]) != null) {
-            context.setNextMode(failureMode);
-            return;
-        }
-
-		User newUser = null;
-		if (credentials[0].equals("A")){
-        	newUser = new Administrator(credentials[1], credentials[2], credentials[3]); 
-		}else{
-			newUser = new Player(credentials[1], credentials[2], credentials[3]);
-		}
-
-        userManager.add(newUser);
-		userManager.save();
-
-        context.setCurrentUser(newUser);
-        context.setNextMode(successMode);
-*/
 	}
-
 	
 	private void goToRegisterError() {
-        context.setNextMode(new AuthenticationMode(
-                new RegisterErrorScreen(), 
-                context,
-                authManager,
-                userManager
-        ));
-    }
+		// Muestras la pantalla de error
+    	new RegisterErrorScreen(context.getScanner()).showScreen(Set.of());
 
-	
+    	// Vuelves al menú de selección (AuthenticationMode)
+    	context.setNextMode(new AuthenticationMode(
+            new WelcomeScreen(context.getScanner()),
+            context,
+            authManager,
+            userManager
+    ));
+    }
 }

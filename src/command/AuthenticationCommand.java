@@ -50,7 +50,7 @@ public class AuthenticationCommand implements Command{
 	            context.setCurrentUser(user);
 	            context.setNextMode(successMode);
 	        } else {
-	            context.setNextMode(new AuthenticationMode(new RegisterErrorScreen(), context, authManager, userManager));
+	            context.setNextMode(new AuthenticationMode(new RegisterErrorScreen(context.getScanner()), context, authManager, userManager));
 	        }
 		}
 	}

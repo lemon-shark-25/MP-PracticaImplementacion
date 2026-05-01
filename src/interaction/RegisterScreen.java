@@ -46,7 +46,7 @@ public class RegisterScreen implements Screen{
         	if (input.equals("A") || input.equals("J")) {
             	return input.charAt(0);
         	}
-        	System.out.println("Opción inválida.");
+        	System.out.println("Opcion invalida.");
     	}
 	}
 
