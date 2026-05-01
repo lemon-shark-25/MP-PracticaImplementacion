@@ -5,6 +5,5 @@ package domain;
  * * * @author Miguel Pradillo Bartolomé
  */
 public interface GameCharacterBuilder {
-    
-    GameCharacter gameCharacterBuilder();
+    GameCharacter gameCharacterBuilder(GameCharacter characterr);
 }
