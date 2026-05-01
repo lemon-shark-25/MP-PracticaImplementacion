@@ -40,7 +40,7 @@ public class AuthenticationCommand implements Command{
 		this.authScreen = authScreen;
 		this.userManager = userManager;
 		this.authManager = authManager;
-		this.successMode = new MenuMode(new MenuScreen(context), context);
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager);
 	}
 
 

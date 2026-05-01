@@ -5,16 +5,13 @@
 package control;
 
 import command.AcceptChallengeCommand;
-import command.AuthenticationCommand;
 import command.CheckRankingCommand;
 import command.Command;
 import command.EditCharacterCommand;
 import command.ExitCommand;
 import command.RegisterCharacterCommand;
-import command.RegisterCommand;
 import command.SendChallengeCommand;
 import command.UnregisterCommand;
-import interaction.AuthenticationScreen;
 import interaction.Screen;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +23,15 @@ import java.util.Map;
 public class MenuMode implements Mode{
 	private final Screen screen;
 	private final GameContext context;
+	private final AuthenticationManager authManager;
+    private final UserManager userManager;
 	private Map<Character, Command> commands;
 
-	public MenuMode(Screen screen, GameContext context){
+	public MenuMode(Screen screen, GameContext context, AuthenticationManager authManager, UserManager userManager){
 		this.screen = screen;
 		this.context = context; 
+		this.authManager = authManager;
+		this.userManager = userManager;
 		initCommands();
 	}
 	
@@ -42,7 +43,7 @@ public class MenuMode implements Mode{
 		commands.put('c', new RegisterCharacterCommand());
 		commands.put('d', new EditCharacterCommand());
 		commands.put('e', new CheckRankingCommand());
-		commands.put('f', new UnregisterCommand());
+		commands.put('f', new UnregisterCommand(context, userManager, authManager));
 		commands.put('g', new ExitCommand(context));
 	}	
 

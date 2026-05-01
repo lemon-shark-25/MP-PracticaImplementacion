@@ -67,5 +67,9 @@ public class UserManager {
 	public void add(User u) {
 		usuarios.put(u.getNick(), u);
 	}
+
+	public void remove(String nick) {
+		usuarios.remove(nick);
+	}
 	
 }
