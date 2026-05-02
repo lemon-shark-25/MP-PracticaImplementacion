@@ -28,34 +28,47 @@ public class Catalogue {
 			"./data/will.csv", "./data/armor.csv", "./data/weapon.csv",
 			"./data/strength.csv", "./data/weakness.csv"};
 		//Bucle de carga de los HashMap
+                for (String file: routes){
+                    loadFile(file);
+                }
 	}
 	
     public HashMap<String, Discipline> getDiscipline() {
-        return discipline;
+        return disciplineMap;
     }
 
     public HashMap<String, Gift> getGift() {
-        return gift;
+        return giftMap;
     }
 
     public HashMap<String, Will> getWill() {
-        return will;
+        return willMap;
     }
 
     public HashMap<String, Armor> getArmor() {
-        return armor;
+        return armorMap;
     }
 
     public HashMap<String, Weapons> getWeapon() {
-        return weapon;
+        return weaponMap;
     }
 
     public HashMap<String, Strength> getStrength() {
-        return strength;
+        return strengthMap;
     }
 
     public HashMap<String, Weakness> getWeakness() {
-        return weakness;
+        return weaknessMap;
+    }
+
+    private void loadFile(String file) {
+        
+        String[] variable = new String[5];
+        
+
+
+
+
     }
 
 }
