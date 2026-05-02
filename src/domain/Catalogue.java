@@ -10,25 +10,26 @@ import java.util.HashMap;
  *
  * @author Hugo Martínez González
  */
-public class Catalog {
-        private HashMap<String,Discipline> discipline;
-        private HashMap<String,Gift> gift;
-        private HashMap<String,Will> will;
-        private HashMap<String,Armor> armor; 
-        private HashMap<String,Weapons> weapon; 
-        private HashMap<String,Strength> strength; 
-        private HashMap<String,Weakness> weakness; 
+public class Catalogue {
+	private final HashMap<String,Discipline> disciplineMap;
+	private final HashMap<String,Gift> giftMap;
+	private final HashMap<String,Will> willMap;
+	private final HashMap<String,Armor> armorMap; 
+	private final HashMap<String,Weapons> weaponMap; 
+	private final HashMap<String,Strength> strengthMap; 
+	private final HashMap<String,Weakness> weaknessMap; 
 
-    public Catalog(HashMap<String, Discipline> discipline, HashMap<String, Gift> gift, HashMap<String, Will> will, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
-        this.discipline = discipline;
-        this.gift = gift;
-        this.will = will;
-        this.armor = armor;
-        this.weapon = weapon;
-        this.strength = strength;
-        this.weakness = weakness;
-    }
+	public Catalogue(){
+		load();
+	}
 
+	private void load(){
+		String[] routes = {"./data/discipline.csv", "./data/gift.csv", 
+			"./data/will.csv", "./data/armor.csv", "./data/weapon.csv",
+			"./data/strength.csv", "./data/weakness.csv"};
+		//Bucle de carga de los HashMap
+	}
+	
     public HashMap<String, Discipline> getDiscipline() {
         return discipline;
     }
