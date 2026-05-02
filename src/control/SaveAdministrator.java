@@ -6,7 +6,7 @@ package control;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Scanner; // Añadida para leer
+import java.util.Scanner;
 /**
  *
  * @author dezqu
