@@ -26,8 +26,8 @@ public class HunterCharacterBuilder extends SimilarGameCharacterBuilder{
         System.out.println("Escoge la habilidad especial de tu personaje:");
         String[] inventary = showOptions(ability,sc,false,"habilidad");
         String name = inventary[requestNumber("Escoge la habilidad de tu personaje pulsando el número", 0, inventary.length-1, sc)];
-        Will wil = (Will) ability.get(name);
-        characterr.setAbility(wil); 
+        Gift gif = (Gift) ability.get(name);
+        characterr.setAbility(gif); 
     }
 
 }
