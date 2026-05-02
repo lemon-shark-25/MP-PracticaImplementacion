@@ -6,6 +6,7 @@ Repositorio para el trabajo de MP.
 - Apache Ant
 - SonarQube (local)
 - SonarScanner CLI
+- Jenkins
 
 Compilación:
   ant clean compile
