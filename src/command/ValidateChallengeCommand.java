@@ -4,6 +4,7 @@
  */
 package command;
 
+import control.AdminChallengeValidationMode;
 import control.AuthenticationManager;
 import control.GameContext;
 import control.MenuMode;
