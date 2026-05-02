@@ -65,7 +65,12 @@ public class MenuMode implements Mode{
 	}	
 
 	private void initAdminCommands() {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	
+		commands.put('a', new ValidateChallengesCommand(context, userManager, challengeMediator));
+		commands.put('b', new AdminEditCharacterCommand(context, userManager));
+		commands.put('c', new ManageUsersCommand(context, userManager));
+		commands.put('d', new CheckRankingCommand(context));
+		commands.put('e', new UnregisterCommand(context, userManager, authManager));
 	}
 
 	@Override
