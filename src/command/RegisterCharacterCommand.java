@@ -5,7 +5,6 @@
 package command;
 
 import control.GameContext;
-import control.MenuMode;
 import domain.Armor;
 import domain.Discipline;
 import domain.Gift;
@@ -59,13 +58,10 @@ public class RegisterCharacterCommand implements Command{
         this.weakness = weakness;
     }
 
-
-      
 	@Override
 	public void execute() {
             menu();
-            int chose = requestNumber("Escoge:",0,2,sc);
-            MenuMode mode = new MenuMode(context.getScanner(), context, );
+            int chose = requestNumber("Escoge:",0,2,context.getScanner());
             switch (chose){
                 case 0:{
                    VampireCreator vampCreator = new VampireCreator();
@@ -73,7 +69,6 @@ public class RegisterCharacterCommand implements Command{
                    VampireCharacterBuilder vampBuilder = new VampireCharacterBuilder(discipline,armor,weapon,strength,weakness);
                    Player play = (Player) context.getCurrentUser();
                    play.setGameCharacter(vampBuilder.gameCharacterBuilder(vampir));
-                   context.setNextMode(mode);
                    break;
                 }
                 case 1:{
@@ -82,7 +77,6 @@ public class RegisterCharacterCommand implements Command{
                     LycanthropeCharacterBuilder lycanBuilder = new LycanthropeCharacterBuilder(discipline,armor,weapon,strength,weakness);
                     Player play = (Player) context.getCurrentUser();
                     play.setGameCharacter(lycanBuilder.gameCharacterBuilder(lycan));
-                    context.setNextMode(mode);
                     break; 
                 }
                 case 2:{    
@@ -91,7 +85,6 @@ public class RegisterCharacterCommand implements Command{
                     HunterCharacterBuilder huntBuilder = new HunterCharacterBuilder(discipline,armor,weapon,strength,weakness);
                     Player play = (Player) context.getCurrentUser();
                     play.setGameCharacter(huntBuilder.gameCharacterBuilder(hunt));
-                    context.setNextMode(mode);
                     break; 
                 }
                 
