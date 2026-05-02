@@ -40,22 +40,15 @@ public class RegisterCharacterCommand implements Command{
     private HashMap<String,Strength> strength; 
     private HashMap<String,Weakness> weakness; 
 
-    public RegisterCharacterCommand(GameContext context, 
-			HashMap<String, Discipline> discipline, 
-			HashMap<String, Gift> gift, 
-			HashMap<String, Will> will,
-			HashMap<String, Armor> armor,
-			HashMap<String, Weapons> weapon, 
-			HashMap<String, Strength> strength, 
-			HashMap<String, Weakness> weakness) {
+    public RegisterCharacterCommand(GameContext context) {
         this.context = context;
-        this.discipline = discipline;
-        this.gift = gift;
-        this.will = will;
-        this.armor = armor;
-        this.weapon = weapon;
-        this.strength = strength;
-        this.weakness = weakness;
+        this.discipline = context.getCatalog().getDiscipline();
+        this.gift = context.getCatalog().getGift();
+        this.will = context.getCatalog().getWill();
+        this.armor = context.getCatalog().getArmor();
+        this.weapon = context.getCatalog().getWeapon();
+        this.strength = context.getCatalog().getStrength();
+        this.weakness = context.getCatalog().getWeakness();
     }
 
 	@Override
