@@ -9,10 +9,10 @@ import java.util.Scanner;
  * * @author Miguel Pradillo Bartolomé
  */
 
-public class VampireGameBuilder extends SimilarGameCharacterBuilder {
+public class VampireCharacterBuilder extends SimilarGameCharacterBuilder {
     private int age;
 
-    public VampireGameBuilder(HashMap<String, ? extends Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
+    public VampireCharacterBuilder(HashMap<String, ? extends Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
         super(ability, armor, weapon, strength, weakness);
     }
 

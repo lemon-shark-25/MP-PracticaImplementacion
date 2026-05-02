@@ -11,19 +11,16 @@ import java.util.Scanner;
  */
 public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilder {
     
-    
-        private HashMap<String,Ability> ability;
+        protected HashMap<String,Ability> ability;
         private HashMap<String,Armor> armor; 
         private HashMap<String,Weapons> weapon; 
-        private Minion minion;
         private HashMap<String,Strength> strength; 
         private HashMap<String,Weakness> weakness; 
 
-    public SimilarGameCharacterBuilder(HashMap<String,Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
-        this.ability = ability;
+    public SimilarGameCharacterBuilder(HashMap<String, ? extends Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
+        this.ability = (HashMap<String, Ability>) ability;        
         this.armor = armor;
         this.weapon = weapon;
-        this.minion = minion;
         this.strength = strength;
         this.weakness = weakness;
     }
@@ -53,7 +50,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         characterr.setPower(requestNumber("Elige el poder de tu personaje, debe estar entre 1 y 5: ",1,5,sc));
     }
     
-    private void setAbility(GameCharacter characterr, Scanner sc){
+    protected void setAbility(GameCharacter characterr, Scanner sc){
         System.out.println("Escoge la habilidad especial de tu personaje:");
         String[] inventary = showOptions(ability,sc,false,"habilidad");
         String name = inventary[requestNumber("Escoge la habilidad de tu personaje pulsando el número", 0, inventary.length-1, sc)];
