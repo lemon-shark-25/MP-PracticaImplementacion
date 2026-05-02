@@ -5,7 +5,7 @@
 package command;
 
 import control.GameContext;
-import domain.Ability;
+import control.MenuMode;
 import domain.Armor;
 import domain.Discipline;
 import domain.Gift;
@@ -17,7 +17,6 @@ import domain.LycanthropeCharacterBuilder;
 import domain.LycanthropeCreator;
 import domain.Player;
 import domain.Strength;
-import domain.User;
 import domain.Vampire;
 import domain.VampireCreator;
 import domain.VampireCharacterBuilder;
@@ -42,7 +41,14 @@ public class RegisterCharacterCommand implements Command{
     private HashMap<String,Strength> strength; 
     private HashMap<String,Weakness> weakness; 
 
-    public RegisterCharacterCommand(GameContext context, HashMap<String, Discipline> discipline, HashMap<String, Gift> gift, HashMap<String, Will> will , HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
+    public RegisterCharacterCommand(GameContext context, 
+			HashMap<String, Discipline> discipline, 
+			HashMap<String, Gift> gift, 
+			HashMap<String, Will> will,
+			HashMap<String, Armor> armor,
+			HashMap<String, Weapons> weapon, 
+			HashMap<String, Strength> strength, 
+			HashMap<String, Weakness> weakness) {
         this.context = context;
         this.discipline = discipline;
         this.gift = gift;
@@ -57,10 +63,9 @@ public class RegisterCharacterCommand implements Command{
       
 	@Override
 	public void execute() {
-            Scanner sc = new Scanner(System.in);
             menu();
             int chose = requestNumber("Escoge:",0,2,sc);
-            MenuMode mode = new MenuMode();
+            MenuMode mode = new MenuMode(context.getScanner(), context, );
             switch (chose){
                 case 0:{
                    VampireCreator vampCreator = new VampireCreator();
