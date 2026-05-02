@@ -4,24 +4,27 @@
  */
 package domain;
 
-import java.util.LinkedList;
+import control.ChallengeManager;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class ChallengeMediator {
-	
-	private final List<Challenge> challenges = new LinkedList<>();
 
-    public void registerChallenge(Challenge challenge) {
-        challenges.add(challenge);
-    }
+	private final ChallengeManager challengeManager;
+
+	public ChallengeMediator(ChallengeManager challengeManager) {
+		this.challengeManager = challengeManager;
+	}
+
+	public void registerChallenge(Challenge challenge) {
+		challengeManager.addChallenge(challenge);
+	}
 
 	public Challenge nextChallengeForAdmin() {
-		return challenges.stream()
+		return challengeManager.getChallenges().stream()
 				.filter(c -> c.getState()
 				== ChallengeState.PENDING_ADMIN_VALIDATION)
 				.findFirst()
@@ -30,17 +33,20 @@ public class ChallengeMediator {
 
 	public void passChallenge(Challenge challenge, Administrator admin) {
 		challenge.validateByAdmin(admin);
+		challengeManager.save();
 	}
 
 	public void denyChallenge(Challenge challenge, Administrator admin) {
 		challenge.denyByAdmin(admin);
+		challengeManager.save();
 	}
 
 	public List<Challenge> challengesForPlayer(Player player) {
-		return challenges.stream()
+		return challengeManager.getChallenges().stream()
 				.filter(c -> c.getDefiedPlayer().equals(player)
 				&& c.getState()
 				== ChallengeState.PENDING_PLAYER_RESPONSE)
-				.collect(Collectors.toList());
+				.toList();
 	}
+	
 }

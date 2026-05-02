@@ -4,11 +4,14 @@
  */
 package domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class Challenge {
+public class Challenge implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
     private Administrator validatedBy;    
     private ChallengeState state;

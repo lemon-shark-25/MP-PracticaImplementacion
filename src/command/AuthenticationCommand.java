@@ -10,6 +10,7 @@ import control.GameContext;
 import control.MenuMode;
 import control.Mode;
 import control.UserManager;
+import domain.ChallengeMediator;
 import domain.User;
 import interaction.AuthenticationScreen;
 import interaction.LoginErrorScreen;
@@ -40,7 +41,9 @@ public class AuthenticationCommand implements Command{
 		this.authScreen = authScreen;
 		this.userManager = userManager;
 		this.authManager = authManager;
-		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager);
+		//REVISAR
+		ChallengeMediator challengeManager;
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager, challengeManager);
 	}
 
 
