@@ -29,14 +29,14 @@ public class MenuScreen implements Screen {
 			if (context.getCurrentUser() instanceof Player player) System.out.println("Oro: " + player.getGold());
 		}
         System.out.println("""
-                     Seleccione una de las siguientes opciones:
-                     a) Lanzar desafio
-                     b) Aceptar desafio
-                     c) Registrar personaje
-                     d) Editar personaje
-                     e) Consultar clasificacion
-                     f) Darse de baja
-                     g) Salir
+Seleccione una de las siguientes opciones:
+a) Lanzar desafio
+b) Aceptar desafio
+c) Registrar personaje
+d) Editar personaje
+e) Consultar clasificacion
+f) Darse de baja
+g) Salir
 		""");
 
 		while (true) {
@@ -46,9 +46,11 @@ public class MenuScreen implements Screen {
 			if (!input.isEmpty()) {
 				char choice = input.charAt(0);
 				if (validOptions.contains(choice)) {
+					System.out.println("");
 					return choice;
 				}
 				System.out.println("Opcion invalida.");
+				System.out.println("");
 			}
 		}
 	}
