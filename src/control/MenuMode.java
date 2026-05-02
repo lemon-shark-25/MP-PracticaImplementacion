@@ -56,7 +56,7 @@ public class MenuMode implements Mode{
 		commands.put('c', new RegisterCharacterCommand());
 		commands.put('d', new EditCharacterCommand());
 		commands.put('e', new CheckRankingCommand());
-		commands.put('f', new UnregisterCommand(context, userManager, authManager));
+		commands.put('f', new UnregisterCommand(context, userManager, authManager, challengeMediator));
 		commands.put('g', new ExitCommand(context));
 	}	
 
