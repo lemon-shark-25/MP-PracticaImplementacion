@@ -4,6 +4,7 @@
  */
 package control;
 
+import domain.Catalog;
 import domain.ChallengeMediator;
 import interaction.Screen;
 import interaction.WelcomeScreen;
@@ -27,7 +28,7 @@ public class MPPracticaImplementacion {
 		ChallengeManager challengeManager = new ChallengeManager();
 		ChallengeMediator challengeMed = new ChallengeMediator(challengeManager);
 	
-	    GameContext context = new GameContext(s);
+	    GameContext context = new GameContext(s, new Catalog());
 	    Screen screen = new WelcomeScreen(s);
 
 	    Mode initialMode = new AuthenticationMode(screen, context, authManager, userManager, challengeMed);
