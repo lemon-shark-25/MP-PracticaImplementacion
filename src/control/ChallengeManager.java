@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ChallengeManager {
 	
-	private static final String FILE_NAME = "challenges.dat";
+	private static final String FILE_NAME = "./data/challenges.dat";
 	private List<Challenge> challenges;
 
 	public ChallengeManager() {

@@ -30,20 +30,22 @@ public class AuthenticationCommand implements Command{
 	private final UserManager userManager;
 	private final AuthenticationManager authManager;
 	private final Mode successMode;
+	private final ChallengeMediator challengeMed;
 
 	public AuthenticationCommand(
 			GameContext context,
 			AuthenticationScreen authScreen,
 			UserManager userManager,
-			AuthenticationManager authManager) {
+			AuthenticationManager authManager,
+			ChallengeMediator challengeMediator) {
 
 		this.context = context;
 		this.authScreen = authScreen;
 		this.userManager = userManager;
 		this.authManager = authManager;
+		this.challengeMed = challengeMediator;
 		//REVISAR
-		ChallengeMediator challengeManager;
-		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager, challengeManager);
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager, challengeMediator);
 	}
 
 
@@ -57,7 +59,7 @@ public class AuthenticationCommand implements Command{
 	            context.setCurrentUser(user);
 	            context.setNextMode(successMode);
 	        } else {
-	            context.setNextMode(new AuthenticationMode(new LoginErrorScreen(context.getScanner()), context, authManager, userManager));
+	            context.setNextMode(new AuthenticationMode(new LoginErrorScreen(context.getScanner()), context, authManager, userManager, challengeMed));
 	        }
 		} else {
 			// Muestras la pantalla de error
@@ -68,7 +70,8 @@ public class AuthenticationCommand implements Command{
             	new WelcomeScreen(context.getScanner()),
             	context,
             	authManager,
-            	userManager
+            	userManager,
+				challengeMed
     		));
 		}
 	}

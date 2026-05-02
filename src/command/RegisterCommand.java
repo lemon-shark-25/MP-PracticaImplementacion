@@ -30,20 +30,20 @@ public class RegisterCommand implements Command{
 	private final RegisterScreen registerScreen;
 	private final Mode successMode;
 	private final AuthenticationManager authManager;
+	private final ChallengeMediator challengeMed;
 
 	public RegisterCommand(
 			GameContext context,
 			UserManager userManager,
-			AuthenticationManager authManager) {
+			AuthenticationManager authManager,
+			ChallengeMediator challengeMed) {
 
 		this.context = context;
 		this.userManager = userManager;
-		this.registerScreen
-				= new RegisterScreen(context.getScanner());
-		//REVISAR
+		this.registerScreen = new RegisterScreen(context.getScanner());
+		this.challengeMed = challengeMed;
 		this.authManager = authManager;
-		ChallengeMediator challengeManager;
-		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager, challengeManager);
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager, challengeMed);
 	}
 
 	@Override
@@ -91,7 +91,8 @@ public class RegisterCommand implements Command{
             new WelcomeScreen(context.getScanner()),
             context,
             authManager,
-            userManager
+            userManager,
+			challengeMed
     ));
     }
 }

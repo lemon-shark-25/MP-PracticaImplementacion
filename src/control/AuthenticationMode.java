@@ -8,6 +8,7 @@ import command.AuthenticationCommand;
 import command.Command;
 import command.ExitCommand;
 import command.RegisterCommand;
+import domain.ChallengeMediator;
 import interaction.AuthenticationScreen;
 import interaction.Screen;
 import java.util.HashMap;
@@ -22,15 +23,18 @@ public class AuthenticationMode implements Mode{
     private final GameContext context;
     private final AuthenticationManager authManager;
     private final UserManager userManager;
+	private final ChallengeMediator challengeMed;
     private Map<Character, Command> commands;
 
     public AuthenticationMode(Screen screen, GameContext context,
                               AuthenticationManager authManager,
-                              UserManager userManager) {
+                              UserManager userManager,
+							  ChallengeMediator challengeMediator) {
         this.screen = screen;
         this.context = context;
         this.authManager = authManager;
         this.userManager = userManager;
+		this.challengeMed = challengeMediator;
         initCommands();
     }
 
@@ -41,10 +45,11 @@ public class AuthenticationMode implements Mode{
 				context,
 				new AuthenticationScreen(context.getScanner()),
 				userManager,
-				authManager
+				authManager,
+				challengeMed
 		));
 
-		commands.put('b', new RegisterCommand(context, userManager, authManager)); 
+		commands.put('b', new RegisterCommand(context, userManager, authManager, challengeMed)); 
 		commands.put('c', new ExitCommand(context));
 	}
 

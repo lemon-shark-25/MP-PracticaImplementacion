@@ -8,6 +8,7 @@ import control.AuthenticationManager;
 import control.AuthenticationMode;
 import control.GameContext;
 import control.UserManager;
+import domain.ChallengeMediator;
 import domain.User;
 import interaction.WelcomeScreen;
 
@@ -21,13 +22,16 @@ public class UnregisterCommand implements Command {
 	private final GameContext context;
     private final UserManager userManager;
     private final AuthenticationManager authManager;
+	private final ChallengeMediator challengeMed;
 
     public UnregisterCommand(GameContext context,
                              UserManager userManager,
-                             AuthenticationManager authManager) {
+                             AuthenticationManager authManager,
+							 ChallengeMediator challengeMed) {
         this.context = context;
         this.userManager = userManager;
         this.authManager = authManager;
+		this.challengeMed = challengeMed;
     }
 
 	@Override
@@ -48,7 +52,8 @@ public class UnregisterCommand implements Command {
 						new WelcomeScreen(context.getScanner()),
 						context,
 						authManager,
-						userManager
+						userManager,
+						challengeMed
 				)
 		);
 	}
