@@ -15,15 +15,13 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         private HashMap<String,Ability> ability;
         private HashMap<String,Armor> armor; 
         private HashMap<String,Weapons> weapon; 
-        private Minion minion;
         private HashMap<String,Strength> strength; 
         private HashMap<String,Weakness> weakness; 
 
-    public SimilarGameCharacterBuilder(HashMap<String,Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
+    public SimilarGameCharacterBuilder(HashMap<String,Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
         this.ability = ability;
         this.armor = armor;
         this.weapon = weapon;
-        this.minion = minion;
         this.strength = strength;
         this.weakness = weakness;
     }
