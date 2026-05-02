@@ -16,8 +16,8 @@ public abstract class Equipment implements Describable{
 
 	public Equipment(String n,String descript, int am, int dm){
 		name = n;
-		attackModifier = am;
-		defenseModifier = dm;
+		attackModifier = am; //se suma
+		defenseModifier = dm; //se suma
                 description = descript;
 	}
 
