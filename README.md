@@ -10,6 +10,9 @@ Repositorio para el trabajo de MP.
 Compilación:
   ant clean compile
 
+Ejecución:
+A pesar de que ant trae el comando ``ant run`` recomendamos correr ``ant jar`` y ejecutar ``java -jar dist/MP-PracticaImplementacion.jar`` para evitar que se rompa la interfaz de línea de comandos.
+
 Análisis de calidad:
   ant sonar
 
