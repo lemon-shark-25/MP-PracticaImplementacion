@@ -10,26 +10,24 @@ import java.util.Scanner;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class AuthenticationScreen{
-
+public class LoginScreen {
 	private final Scanner scanner;
 
-	public AuthenticationScreen(Scanner s){
+	public LoginScreen(Scanner s){
 		this.scanner = s;
 	}
 
 	public String[] askCredentials() {
 		System.out.println("Introduzca sus credenciales");
 		
-		System.out.println("Nick: ");
+		System.out.print("Nick: ");
 		String nick = scanner.nextLine();
 
-		System.out.println("Contrasenya: ");
+		System.out.print("Contrasenya: ");
 		String password = scanner.nextLine();
 		
 		String[] credentials = {nick, password};
 
 		return credentials;
-	}
-	
+	}	
 }

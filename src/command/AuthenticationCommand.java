@@ -5,10 +5,18 @@
 package command;
 
 import control.AuthenticationManager;
+import control.AuthenticationMode;
 import control.GameContext;
+import control.MenuMode;
+import control.Mode;
+import control.UserManager;
 import domain.User;
 import interaction.AuthenticationScreen;
-import interaction.Screen;
+import interaction.LoginErrorScreen;
+import interaction.MenuScreen;
+import interaction.RegisterErrorScreen;
+import interaction.WelcomeScreen;
+import java.util.Set;
 
 /**
  *
@@ -18,22 +26,21 @@ public class AuthenticationCommand implements Command{
 
 	private final GameContext context;
 	private final AuthenticationScreen authScreen;
+	private final UserManager userManager;
 	private final AuthenticationManager authManager;
-	private final Screen successScreen;
-	private final Screen failureScreen;
+	private final Mode successMode;
 
 	public AuthenticationCommand(
 			GameContext context,
 			AuthenticationScreen authScreen,
-			AuthenticationManager authService,
-			Screen successScreen,
-			Screen failureScreen) {
+			UserManager userManager,
+			AuthenticationManager authManager) {
 
 		this.context = context;
 		this.authScreen = authScreen;
-		this.authManager = authService;
-		this.successScreen = successScreen;
-		this.failureScreen = failureScreen;
+		this.userManager = userManager;
+		this.authManager = authManager;
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager);
 	}
 
 
@@ -41,14 +48,26 @@ public class AuthenticationCommand implements Command{
 	public void execute() {
 		String[] credentials = authScreen.askCredentials();
 
-		User user = authManager.authenticate(credentials[0], credentials[1]);
+		if (authManager.login(credentials[0], credentials[1])){
+			User user = userManager.findByNick(credentials[0]);
+			if (user != null) {
+	            context.setCurrentUser(user);
+	            context.setNextMode(successMode);
+	        } else {
+	            context.setNextMode(new AuthenticationMode(new LoginErrorScreen(context.getScanner()), context, authManager, userManager));
+	        }
+		} else {
+			// Muestras la pantalla de error
+    		new RegisterErrorScreen(context.getScanner()).showScreen(Set.of());
 
-		if (user != null) {
-            context.setCurrentUser(user);
-            context.setNextScreen(successScreen);
-        } else {
-            context.setNextScreen(failureScreen);
-        }
+    		// Vuelves al menú de selección (AuthenticationMode)
+    		context.setNextMode(new AuthenticationMode(
+            	new WelcomeScreen(context.getScanner()),
+            	context,
+            	authManager,
+            	userManager
+    		));
+		}
 	}
 	
 }

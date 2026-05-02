@@ -4,14 +4,17 @@
  */
 package domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public abstract class User {
-	private String name;
-	private String nick;
-	private String password;
+public abstract class User implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private final String name;
+	private final String nick;
+	private final String password;
 
 	public User(String n, String nck, String p){
 		name = n;
@@ -27,9 +30,24 @@ public abstract class User {
 		return nick;
 	}
 
-	public String getPassword() {
-		return password;
+	public boolean checkPassword(String pass) {
+		return this.password.equals(pass);
 	}
 
-		
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof User)) {
+			return false;
+		}
+		User user = (User) o;
+		return nick.equals(user.nick);
+	}
+
+	@Override
+	public int hashCode() {
+		return nick.hashCode();
+	}
 }

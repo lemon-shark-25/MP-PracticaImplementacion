@@ -11,7 +11,15 @@ import domain.User;
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class AuthenticationManager {
-	public User authenticate(String nick, String password){
+	private final UserManager um;
 
+	public AuthenticationManager(UserManager um){
+		this.um = um;
+	}
+
+	public boolean login(String nick, String password) {
+		User u = um.findByNick(nick);
+		if (u == null) return false;
+		return u.checkPassword(password);
 	}
 }

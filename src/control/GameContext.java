@@ -5,6 +5,7 @@
 package control;
 
 import domain.User;
+import java.util.Scanner;
 
 /**
  * Implementa el patrón Decorator
@@ -13,7 +14,11 @@ import domain.User;
 public class GameContext {
 	private User currentUser;
 	private Mode nextMode;
-    private Character[] characters;
+	private final Scanner scanner;
+
+	public GameContext(Scanner s){
+		scanner = s;
+	}
 
 	public User getCurrentUser() {
 		return currentUser;
@@ -29,6 +34,10 @@ public class GameContext {
 
 	public void setNextMode(Mode mode) {
 		nextMode = mode;	
+	}
+
+	public Scanner getScanner() {
+		return scanner;
 	}
 
 }

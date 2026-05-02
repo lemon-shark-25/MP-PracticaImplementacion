@@ -37,8 +37,5 @@ public abstract class Equipment implements Describable{
         @Override
         public String getDescription() {
             return description;
-        }
-
-        
-	
+        }	
 }
