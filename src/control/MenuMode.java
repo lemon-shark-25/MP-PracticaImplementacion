@@ -41,15 +41,11 @@ public class MenuMode implements Mode{
 	}
 	
 	private void initCommands() {
-	    commands = new HashMap<>();
-
 	    if (context.getCurrentUser() instanceof Player) {
 	        initPlayerCommands();
 	    } else if (context.getCurrentUser() instanceof Administrator) {
 	        initAdminCommands();
 	    }
-
-    	commands.put('g', new ExitCommand(context));
 	}
 
 	private void initPlayerCommands() {
@@ -65,12 +61,14 @@ public class MenuMode implements Mode{
 	}	
 
 	private void initAdminCommands() {
+		commands = new HashMap<>();
 	
 		commands.put('a', new ValidateChallengesCommand(context, userManager, challengeMediator));
 		commands.put('b', new AdminEditCharacterCommand(context, userManager));
 		commands.put('c', new ManageUsersCommand(context, userManager));
 		commands.put('d', new CheckRankingCommand(context));
 		commands.put('e', new UnregisterCommand(context, userManager, authManager));
+		commands.put('f', new ExitCommand(context));
 	}
 
 	@Override

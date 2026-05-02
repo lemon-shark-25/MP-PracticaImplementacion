@@ -36,7 +36,7 @@ b) Editar personaje
 c) Gestionar usuarios
 d) Consultar clasificacion
 e) Darse de baja
-g) Salir
+f) Salir
             """);
 
 		} else if (context.getCurrentUser() instanceof Player player) {
