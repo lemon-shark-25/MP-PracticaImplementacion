@@ -11,15 +11,14 @@ import java.util.Scanner;
  */
 public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilder {
     
-    
         private HashMap<String,Ability> ability;
         private HashMap<String,Armor> armor; 
         private HashMap<String,Weapons> weapon; 
         private HashMap<String,Strength> strength; 
         private HashMap<String,Weakness> weakness; 
 
-    public SimilarGameCharacterBuilder(HashMap<String,Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
-        this.ability = ability;
+    public SimilarGameCharacterBuilder(HashMap<String, ? extends Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String,Strength> strength, HashMap<String,Weakness> weakness) {
+        this.ability = (HashMap<String, Ability>) ability;        
         this.armor = armor;
         this.weapon = weapon;
         this.strength = strength;
