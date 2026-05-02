@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class VampireGameBuilder extends SimilarGameCharacterBuilder {
     private int age;
 
-    public VampireGameBuilder(HashMap<String, Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
-        super(ability, armor, weapon, minion, strength, weakness);
+    public VampireGameBuilder(HashMap<String, Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
+        super(ability, armor, weapon, strength, weakness);
     }
 
     @Override
