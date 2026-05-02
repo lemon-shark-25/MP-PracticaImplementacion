@@ -9,11 +9,11 @@ import java.util.Scanner;
  * * @author Miguel Pradillo Bartolomé
  */
 
-public class VampireGameBuilder extends SimilarGameCharacterBuilder {
+public class VampireCharacterBuilder extends SimilarGameCharacterBuilder {
     private int age;
 
-    public VampireGameBuilder(HashMap<String, Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, Minion minion, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
-        super(ability, armor, weapon, minion, strength, weakness);
+    public VampireCharacterBuilder(HashMap<String, ? extends Ability> ability, HashMap<String, Armor> armor, HashMap<String, Weapons> weapon, HashMap<String, Strength> strength, HashMap<String, Weakness> weakness) {
+        super(ability, armor, weapon, strength, weakness);
     }
 
     @Override
@@ -24,6 +24,17 @@ public class VampireGameBuilder extends SimilarGameCharacterBuilder {
         vamp.setAge(age);
         return vamp;
     }
+    
+    
+    @Override
+    protected void setAbility(GameCharacter characterr, Scanner sc){
+        System.out.println("Escoge la habilidad especial de tu personaje:");
+        String[] inventary = showOptions(ability,sc,false,"habilidad");
+        String name = inventary[requestNumber("Escoge la habilidad de tu personaje pulsando el número", 0, inventary.length-1, sc)];
+        Discipline disc = (Discipline) ability.get(name);
+        characterr.setAbility(disc); 
+    }
+    
         
         @Override
         protected void setMinion(GameCharacter characterr, Scanner sc, Demon demon){//revisar la logica muy bien

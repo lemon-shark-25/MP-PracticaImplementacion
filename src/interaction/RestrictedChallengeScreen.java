@@ -4,6 +4,7 @@
  */
 package interaction;
 
+import domain.Challenge;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -11,30 +12,37 @@ import java.util.Set;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class WelcomeScreen implements Screen{
-
-	private final Scanner scanner;
-	public WelcomeScreen(Scanner s){
-		this.scanner = s;
-	}
+public class RestrictedChallengeScreen implements Screen {
 	
-	@Override
+	private final Scanner scanner;
+	private final Challenge challenge;
+
+	public RestrictedChallengeScreen(Scanner scanner, Challenge challenge) {
+		this.scanner = scanner;
+		this.challenge = challenge;
+	}
+
+		@Override
 	public char showScreen(Set<Character> validOptions) {
 		System.out.println("""
-Bienvenido a Simulador de Combate Fantastico!
-Seleccione una de las siguientes opciones:
-a) Iniciar sesion
-b) Crear cuenta
-c) Salir del juego
-		""");
+[Desafío pendiente]
+Te desafía: %s
+Oro en juego: %d
 
-		while(true){
-		System.out.print("Opcion:");
-		String input = scanner.nextLine().trim().toLowerCase();
+a) Aceptar desafío
+b) Rechazar desafío
+""".formatted(
+				challenge.getDefyingPlayer().getNick(),
+				challenge.getBetGold()
+		));
 
-			if (!input.isEmpty()){
+		while (true) {
+			System.out.print("Opcion:");
+			String input = scanner.nextLine().trim().toLowerCase();
+
+			if (!input.isEmpty()) {
 				char choice = input.charAt(0);
-				if (validOptions.contains(choice)){
+				if (validOptions.contains(choice)) {
 					System.out.println("");
 					return choice;
 				}
@@ -42,5 +50,7 @@ c) Salir del juego
 				System.out.println("");
 			}
 		}
-	}	
+	}
+
+	
 }

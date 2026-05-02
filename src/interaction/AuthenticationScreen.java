@@ -21,10 +21,10 @@ public class AuthenticationScreen{
 	public String[] askCredentials() {
 		System.out.println("Introduzca sus credenciales");
 		
-		System.out.print("Nick: ");
+		System.out.println("Nick: ");
 		String nick = scanner.nextLine();
 
-		System.out.print("Contrasenya: ");
+		System.out.println("Contrasenya: ");
 		String password = scanner.nextLine();
 		
 		String[] credentials = {nick, password};

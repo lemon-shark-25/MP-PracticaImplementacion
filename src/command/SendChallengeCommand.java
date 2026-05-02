@@ -4,11 +4,18 @@
  */
 package command;
 
+import control.GameContext;
+import control.UserManager;
+import domain.ChallengeMediator;
+
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
 public class SendChallengeCommand implements Command{
+
+	public SendChallengeCommand(GameContext context, UserManager userManager, ChallengeMediator challengeMediator) {
+	}
 
 	@Override
 	public void execute() {

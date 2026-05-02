@@ -4,6 +4,8 @@
  */
 package control;
 
+import domain.Catalog;
+import domain.ChallengeMediator;
 import interaction.Screen;
 import interaction.WelcomeScreen;
 import java.util.Scanner;
@@ -23,11 +25,13 @@ public class MPPracticaImplementacion {
 
 	    UserManager userManager = new UserManager();
 	    AuthenticationManager authManager = new AuthenticationManager(userManager);
+		ChallengeManager challengeManager = new ChallengeManager();
+		ChallengeMediator challengeMed = new ChallengeMediator(challengeManager);
 	
-	    GameContext context = new GameContext(s);
+	    GameContext context = new GameContext(s, new Catalog());
 	    Screen screen = new WelcomeScreen(s);
 
-	    Mode initialMode = new AuthenticationMode(screen, context, authManager, userManager);
+	    Mode initialMode = new AuthenticationMode(screen, context, authManager, userManager, challengeMed);
 	    new ModeManager(initialMode).start();
 	
     	userManager.save(); // guardar al salir

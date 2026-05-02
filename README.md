@@ -6,9 +6,13 @@ Repositorio para el trabajo de MP.
 - Apache Ant
 - SonarQube (local)
 - SonarScanner CLI
+- Jenkins
 
 Compilación:
   ant clean compile
+
+Ejecución:
+A pesar de que ant trae el comando ``ant run`` recomendamos correr ``ant jar`` y ejecutar ``java -jar dist/MP-PracticaImplementacion.jar`` para evitar que se rompa la interfaz de línea de comandos.
 
 Análisis de calidad:
   ant sonar
@@ -26,7 +30,7 @@ Dependencias para correr el proyecto:
   Resumen:
   1. Descargar los binarios adecuados para cada plataforma.
   2. Asumiendo Windows, descomprime el archivo en una carpeta que no necesite privilegios de edición, por ejemplo ``C:\ant`` o ``C:\Program Files\ant``
-  3. Ajustar las variables de entorno apropiadamente. JAVA_HOME a nuestro entorno de Java (probablemente ``C:\Program Files\Java\jdk-21.0.10``) y añadir %ANT_HOME%\bin al PATH. 
+  3. Ajustar las variables de entorno apropiadamente. JAVA_HOME a nuestro entorno de Java (probablemente ``C:\Program Files\Java\jdk-21.0.10``) y añadir  ``%ANT_HOME%\bin`` al ``PATH``. 
   4. Y correr ``ant -f fetch.xml -Ddest=system`` en ANT_HOME para descargar todas las dependencias de Ant.
 
 ## Integración Continua

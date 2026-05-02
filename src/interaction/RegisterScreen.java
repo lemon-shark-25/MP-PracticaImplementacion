@@ -23,13 +23,13 @@ public class RegisterScreen implements Screen{
 
 		String type = String.valueOf(this.askUserType());
 		
-		System.out.print("Nombre: ");
+		System.out.println("Nombre: ");
 		String name = scanner.nextLine();
 
-		System.out.print("Nick: ");
+		System.out.println("Nick: ");
 		String nick = scanner.nextLine();
 
-		System.out.print("Contrasenya: ");
+		System.out.println("Contrasenya: ");
 		String password = scanner.nextLine();
 		
 		String[] credentials = {type, name, nick, password};
@@ -44,9 +44,11 @@ public class RegisterScreen implements Screen{
         	String input = scanner.nextLine().trim().toUpperCase();
 
         	if (input.equals("A") || input.equals("J")) {
+				System.out.println("");
             	return input.charAt(0);
         	}
         	System.out.println("Opcion invalida.");
+			System.err.println("");
     	}
 	}
 

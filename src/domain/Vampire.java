@@ -6,7 +6,7 @@ package domain;
  */
 public class Vampire extends GameCharacter {
 
-    private final int bloodPoints =0;
+    private int bloodPoints =0;
     private int age;
 
     public int getBloodPoints() {
@@ -23,6 +23,9 @@ public class Vampire extends GameCharacter {
         this.age = age;
     }
 
+    public void setBloodPoints(int blod){
+        this.bloodPoints=blod;
+    }
     /**
      * Sobrescribimos el getter de Ability para que devuelva directamente 
      * una Discipline y evitar conversiones manuales en el combate.

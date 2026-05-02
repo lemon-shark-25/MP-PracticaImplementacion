@@ -12,6 +12,9 @@ import command.ExitCommand;
 import command.RegisterCharacterCommand;
 import command.SendChallengeCommand;
 import command.UnregisterCommand;
+import domain.Administrator;
+import domain.ChallengeMediator;
+import domain.Player;
 import interaction.Screen;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,27 +28,48 @@ public class MenuMode implements Mode{
 	private final GameContext context;
 	private final AuthenticationManager authManager;
     private final UserManager userManager;
+	private final ChallengeMediator challengeMediator;
 	private Map<Character, Command> commands;
 
-	public MenuMode(Screen screen, GameContext context, AuthenticationManager authManager, UserManager userManager){
+	public MenuMode(Screen screen, GameContext context, AuthenticationManager authManager, UserManager userManager, ChallengeMediator challengeMediator){
 		this.screen = screen;
 		this.context = context; 
 		this.authManager = authManager;
 		this.userManager = userManager;
+		this.challengeMediator = challengeMediator;
 		initCommands();
 	}
 	
 	private void initCommands() {
+	    if (context.getCurrentUser() instanceof Player) {
+	        initPlayerCommands();
+	    } else if (context.getCurrentUser() instanceof Administrator) {
+	        initAdminCommands();
+	    }
+	}
+
+	private void initPlayerCommands() {
 		commands = new HashMap<>();
 
-		commands.put('a', new SendChallengeCommand());
-		commands.put('b', new AcceptChallengeCommand());
-		commands.put('c', new RegisterCharacterCommand());
+		commands.put('a', new SendChallengeCommand(context, userManager, challengeMediator));
+		commands.put('b', new AcceptChallengeCommand(context, userManager, challengeMediator));
+		commands.put('c', new RegisterCharacterCommand(context));
 		commands.put('d', new EditCharacterCommand());
 		commands.put('e', new CheckRankingCommand());
-		commands.put('f', new UnregisterCommand(context, userManager, authManager));
+		commands.put('f', new UnregisterCommand(context, userManager, authManager, challengeMediator));
 		commands.put('g', new ExitCommand(context));
 	}	
+
+	private void initAdminCommands() {
+		commands = new HashMap<>();
+	
+		commands.put('a', new ValidateChallengesCommand(context, userManager, challengeMediator));
+		commands.put('b', new AdminEditCharacterCommand(context, userManager));
+		commands.put('c', new ManageUsersCommand(context, userManager));
+		commands.put('d', new CheckRankingCommand(context));
+		commands.put('e', new UnregisterCommand(context, userManager, authManager));
+		commands.put('f', new ExitCommand(context));
+	}
 
 	@Override
 	public Mode showScreen() {
@@ -66,5 +90,4 @@ public class MenuMode implements Mode{
 		command.execute();
 		return context.getNextMode();
 	}
-	
 }

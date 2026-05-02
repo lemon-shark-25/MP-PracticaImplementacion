@@ -4,6 +4,7 @@
  */
 package control;
 
+import domain.Catalog;
 import domain.User;
 import java.util.Scanner;
 
@@ -15,9 +16,11 @@ public class GameContext {
 	private User currentUser;
 	private Mode nextMode;
 	private final Scanner scanner;
+        private final Catalog catalog;
 
-	public GameContext(Scanner s){
+	public GameContext(Scanner s, Catalog cat){
 		scanner = s;
+                catalog = cat;
 	}
 
 	public User getCurrentUser() {
@@ -39,5 +42,9 @@ public class GameContext {
 	public Scanner getScanner() {
 		return scanner;
 	}
+
+        public Catalog getCatalog() {
+            return catalog;
+        }
 
 }

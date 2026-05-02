@@ -11,6 +11,7 @@ import control.MenuMode;
 import control.Mode;
 import control.UserManager;
 import domain.Administrator;
+import domain.ChallengeMediator;
 import domain.Player;
 import domain.User;
 import interaction.MenuScreen;
@@ -23,24 +24,26 @@ import java.util.Set;
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-	public class RegisterCommand implements Command{
+public class RegisterCommand implements Command{
 	private final GameContext context;
 	private final UserManager userManager;
 	private final RegisterScreen registerScreen;
 	private final Mode successMode;
 	private final AuthenticationManager authManager;
+	private final ChallengeMediator challengeMed;
 
 	public RegisterCommand(
 			GameContext context,
 			UserManager userManager,
-			AuthenticationManager authManager) {
+			AuthenticationManager authManager,
+			ChallengeMediator challengeMed) {
 
 		this.context = context;
 		this.userManager = userManager;
-		this.registerScreen
-				= new RegisterScreen(context.getScanner());
+		this.registerScreen = new RegisterScreen(context.getScanner());
+		this.challengeMed = challengeMed;
 		this.authManager = authManager;
-		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager);
+		this.successMode = new MenuMode(new MenuScreen(context), context, authManager, userManager, challengeMed);
 	}
 
 	@Override
@@ -88,7 +91,8 @@ import java.util.Set;
             new WelcomeScreen(context.getScanner()),
             context,
             authManager,
-            userManager
+            userManager,
+			challengeMed
     ));
     }
 }
