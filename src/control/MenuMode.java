@@ -5,13 +5,16 @@
 package control;
 
 import command.AcceptChallengeCommand;
+import command.AdminEditCharacterCommand;
 import command.CheckRankingCommand;
 import command.Command;
 import command.EditCharacterCommand;
 import command.ExitCommand;
+import command.ManageUsersCommand;
 import command.RegisterCharacterCommand;
 import command.SendChallengeCommand;
 import command.UnregisterCommand;
+import command.ValidateChallengeCommand;
 import domain.Administrator;
 import domain.ChallengeMediator;
 import domain.Player;
@@ -63,11 +66,11 @@ public class MenuMode implements Mode{
 	private void initAdminCommands() {
 		commands = new HashMap<>();
 	
-		commands.put('a', new ValidateChallengesCommand(context, userManager, challengeMediator));
+		commands.put('a', new ValidateChallengeCommand(context, userManager, challengeMediator, authManager));
 		commands.put('b', new AdminEditCharacterCommand(context, userManager));
 		commands.put('c', new ManageUsersCommand(context, userManager));
-		commands.put('d', new CheckRankingCommand(context));
-		commands.put('e', new UnregisterCommand(context, userManager, authManager));
+		commands.put('d', new CheckRankingCommand());
+		commands.put('e', new UnregisterCommand(context, userManager, authManager, challengeMediator));
 		commands.put('f', new ExitCommand(context));
 	}
 

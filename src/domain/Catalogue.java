@@ -4,6 +4,9 @@
  */
 package domain;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -11,13 +14,13 @@ import java.util.HashMap;
  * @author Hugo Martínez González
  */
 public class Catalogue {
-	private final HashMap<String,Discipline> disciplineMap;
-	private final HashMap<String,Gift> giftMap;
-	private final HashMap<String,Will> willMap;
-	private final HashMap<String,Armor> armorMap; 
-	private final HashMap<String,Weapons> weaponMap; 
-	private final HashMap<String,Strength> strengthMap; 
-	private final HashMap<String,Weakness> weaknessMap; 
+	private final HashMap<String,Discipline> disciplineMap = new HashMap<>();
+	private final HashMap<String,Gift> giftMap = new HashMap<>();
+	private final HashMap<String,Will> willMap = new HashMap<>();
+	private final HashMap<String,Armor> armorMap = new HashMap<>(); 
+	private final HashMap<String,Weapons> weaponMap = new HashMap<>(); 
+	private final HashMap<String,Strength> strengthMap = new HashMap<>(); 
+	private final HashMap<String,Weakness> weaknessMap = new HashMap<>(); 
 
 	public Catalogue(){
 		load();
@@ -62,13 +65,71 @@ public class Catalogue {
     }
 
     private void loadFile(String file) {
-        
-        String[] variable = new String[5];
-        
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.isBlank()) {
+                    continue;
+                }
 
+                String[] parts = line.split(",");
+                if (parts.length < 2) {
+                    continue;
+                }
 
+                String name = parts[0].trim();
+                String description = parts[1].trim();
 
-
+                if (file.contains("discipline")) {
+                    if (parts.length >= 5) {
+                        int attack = Integer.parseInt(parts[2].trim());
+                        int defense = Integer.parseInt(parts[3].trim());
+                        int blood = Integer.parseInt(parts[4].trim());
+                        disciplineMap.put(name, new Discipline(name, description, attack, defense, blood));
+                    }
+                } else if (file.contains("gift")) {
+                    if (parts.length >= 4) {
+                        int attack = Integer.parseInt(parts[2].trim());
+                        int defense = Integer.parseInt(parts[3].trim());
+                        giftMap.put(name, new Gift(name, description, attack, defense));
+                    }
+                } else if (file.contains("will")) {
+                    if (parts.length >= 5) {
+                        int attack = Integer.parseInt(parts[2].trim());
+                        int defense = Integer.parseInt(parts[3].trim());
+                        int rage = Integer.parseInt(parts[4].trim());
+                        willMap.put(name, new Will(name, description, attack, defense, rage));
+                    }
+                } else if (file.contains("armor")) {
+                    if (parts.length >= 4) {
+                        int attackMod = Integer.parseInt(parts[2].trim());
+                        int defenseMod = Integer.parseInt(parts[3].trim());
+                        armorMap.put(name, new Armor(name, description, attackMod, defenseMod));
+                    }
+                } else if (file.contains("weapon")) {
+                    if (parts.length >= 5) {
+                        int attackMod = Integer.parseInt(parts[2].trim());
+                        int defenseMod = Integer.parseInt(parts[3].trim());
+                        boolean handNumber = Boolean.parseBoolean(parts[4].trim());
+                        weaponMap.put(name, new Weapons(name, description, attackMod, defenseMod, handNumber));
+                    }
+                } else if (file.contains("strength")) {
+                    if (parts.length >= 4) {
+                        int value = Integer.parseInt(parts[2].trim());
+                        int type = Integer.parseInt(parts[3].trim());
+                        strengthMap.put(name, new Strength(name, description, value, type));
+                    }
+                } else if (file.contains("weakness")) {
+                    if (parts.length >= 4) {
+                        int value = Integer.parseInt(parts[2].trim());
+                        int type = Integer.parseInt(parts[3].trim());
+                        weaknessMap.put(name, new Weakness(name, description, value, type));
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error loading file: " + file + " - " + e.getMessage());
+        }
     }
 
 }
