@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class UserManager {
 
-	private static final String FILE_NAME = "./data/usuarios.dat";
+	private static final String FILE_NAME = "./data/users.dat";
 	private Map<String, User> usuarios;
 
 	public UserManager(){

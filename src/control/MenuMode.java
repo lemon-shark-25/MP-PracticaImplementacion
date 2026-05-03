@@ -48,7 +48,9 @@ public class MenuMode implements Mode{
 	        initPlayerCommands();
 	    } else if (context.getCurrentUser() instanceof Administrator) {
 	        initAdminCommands();
-	    }
+	    } else {
+	        initPlayerCommands();
+		}
 	}
 
 	private void initPlayerCommands() {
