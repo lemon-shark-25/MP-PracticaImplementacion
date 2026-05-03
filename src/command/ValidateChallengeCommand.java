@@ -54,7 +54,8 @@ public class ValidateChallengeCommand implements Command{
                 context,
                 userManager,
                 mediator,
-                pending
+                pending,
+				authManager
         ));
     }
 
