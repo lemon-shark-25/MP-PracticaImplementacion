@@ -1,7 +1,7 @@
-discipline, Disciplina1, Es una disciplina, 1, 1, 1
-gift, Don1, Es un don, 1, 1
-will, Voluntad1, Es una voluntad, 1, 1, 1
-armor, Amadura1, Es una armadura, 1, 1
-weapon, Arma1, Es un arma, 1, 1, true
-strength, Fortaleza1, Es una fortaleza, 1, 1
-weakness, Debilidad1, Es una debilidad, 1, 1
+"discipline","Disciplina1","Es una disciplina",1,1,1
+"gift","Don1","Es un don",1,1
+"will","Voluntad1","Es una voluntad",1,1,1
+"armor","Amadura1","Es una armadura",1,1
+"weapon","Arma1","Es un arma",1,1,"true"
+"strength","Fortaleza1","Es una fortaleza",1,1
+"weakness","Debilidad1","Es una debilidad",1,1
