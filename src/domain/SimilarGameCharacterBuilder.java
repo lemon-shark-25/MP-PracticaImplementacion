@@ -104,7 +104,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
                 String name = requestString("Elige el nombre del esbirro", sc);
                 int health = requestNumber("Elige la salud del esbirro",1,3,sc);
                 String[] loyalty = {"ALTA", "MEDIA", "BAJA"};
-                String loyal = loyalty[requestNumber("Elige la lealtad del esbirro /n0)ALTA /n1)MEDIA /n2) BAJA", 0,2,sc)];
+                String loyal = loyalty[requestNumber("Elige la lealtad del esbirro \n0)ALTA \n1)MEDIA \n2) BAJA", 0,2,sc)];
                 if (demon == null){
                     characterr.setMinion(new Human(name,health, loyal ,characterr));
                 }else demon.addMinion(new Human(name,health,loyal ,characterr));
