@@ -115,11 +115,7 @@ public class Catalogue {
             System.out.println("Ocurrió un error inesperado: " + e.getMessage()); 
         } 
     }
-
-
-
     
-
     private int transform(String word){
         int number =0;
         try {
