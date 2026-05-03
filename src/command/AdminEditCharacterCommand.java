@@ -5,13 +5,14 @@
 package command;
 
 import control.GameContext;
+import control.UserManager;
 
 /**
  *
  * @author Ignacio Jerónimo Martín i.jeronimo.2024@alumnos.urjc.es
  */
-public class CheckRankingCommand implements Command{
-	public CheckRankingCommand(GameContext context){
+public class AdminEditCharacterCommand implements Command{
+	public AdminEditCharacterCommand(GameContext context, UserManager userManager){
 
 	}
 

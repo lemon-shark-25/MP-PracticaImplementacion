@@ -139,9 +139,4 @@ public class BattleMode implements Mode {
         return '0'; // Carácter de control de flujo
     }
 
-    @Override
-    public Screen doAction(char action) {
-        // Aquí se rutearía a la pantalla de menú correspondiente tras el combate
-        return null; 
-    }
 }

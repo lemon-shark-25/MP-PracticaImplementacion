@@ -4,7 +4,9 @@
  */
 package control;
 
+import command.ApproveChallengeCommand;
 import command.Command;
+import command.DenyChallengeCommand;
 import command.ExitCommand;
 import domain.Challenge;
 import domain.ChallengeMediator;
@@ -23,6 +25,7 @@ public class AdminChallengeValidationMode implements Mode{
 	private final UserManager userManager;
 	private final ChallengeMediator mediator;
 	private final Challenge challenge;
+	private final AuthenticationManager authManager;
 
 	private final Map<Character, Command> commands = new HashMap<>();
 
@@ -30,19 +33,21 @@ public class AdminChallengeValidationMode implements Mode{
 				GameContext context,
 				UserManager userManager,
 				ChallengeMediator mediator,
-				Challenge challenge) {
+				Challenge challenge,
+				AuthenticationManager autheManager) {
 			this.screen = screen;
 			this.context = context;
 			this.userManager = userManager;
 			this.mediator = mediator;
 			this.challenge = challenge;
+			this.authManager = autheManager;
 
 			initCommands();
 		}
 
 	private void initCommands() {
-        commands.put('a', new ApproveChallengeCommand(context, userManager, mediator, challenge));
-        commands.put('b', new DenyChallengeCommand(context, userManager, mediator, challenge));
+        commands.put('a', new ApproveChallengeCommand(context, userManager, mediator, challenge, authManager));
+        commands.put('b', new DenyChallengeCommand(context, userManager, mediator, challenge, authManager));
         commands.put('c', new ExitCommand(context)); // opcional aquí también
     }
 
