@@ -11,13 +11,13 @@ import java.util.HashMap;
  * @author Hugo Martínez González
  */
 public class Catalogue {
-	private final HashMap<String,Discipline> disciplineMap;
-	private final HashMap<String,Gift> giftMap;
-	private final HashMap<String,Will> willMap;
-	private final HashMap<String,Armor> armorMap; 
-	private final HashMap<String,Weapons> weaponMap; 
-	private final HashMap<String,Strength> strengthMap; 
-	private final HashMap<String,Weakness> weaknessMap; 
+	private final HashMap<String,Discipline> disciplineMap = new HashMap<>();
+	private final HashMap<String,Gift> giftMap = new HashMap<>();
+	private final HashMap<String,Will> willMap = new HashMap<>();
+	private final HashMap<String,Armor> armorMap = new HashMap<>(); 
+	private final HashMap<String,Weapons> weaponMap = new HashMap<>(); 
+	private final HashMap<String,Strength> strengthMap = new HashMap<>(); 
+	private final HashMap<String,Weakness> weaknessMap = new HashMap<>(); 
 
 	public Catalogue(){
 		load();
