@@ -1,6 +1,7 @@
 package domain;
 
 public class StatsCalculator {
+	/*
     private DamageStrategy Algorithm;
     private DefenseStrategy Algorithm;
     
@@ -24,5 +25,6 @@ public class StatsCalculator {
 	public void setdefencestrategy(Algorithm a) {
 
     }
+*/
 }
 
