@@ -134,28 +134,6 @@ public abstract class EditGameCharacter {
         }   
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     protected int requestNumber(String message, int min, int max, Scanner sc){
         int number =0;
         boolean proof;
