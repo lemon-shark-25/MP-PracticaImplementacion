@@ -34,4 +34,6 @@ public class Human implements Minion{
     public GameCharacter getOwner() {
         return owner;
     }
+
+	//Prueba
 }

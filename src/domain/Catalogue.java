@@ -27,6 +27,8 @@ public class Catalogue {
 	}
 
 	private void load() throws FileNotFoundException{
+		String route = "./data/catalogue.csv";
+		/*
 		String[] routes = {"./data/discipline.csv", "./data/gift.csv", 
 			"./data/will.csv", "./data/armor.csv", "./data/weapon.csv",
 			"./data/strength.csv", "./data/weakness.csv"};
@@ -39,6 +41,8 @@ public class Catalogue {
 		for (String fileName: routes){
                     loadFile(fileName);
 		}
+		*/
+		loadFile(route);
 	}
 	
     public HashMap<String, Discipline> getDiscipline() {
