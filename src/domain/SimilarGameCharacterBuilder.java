@@ -61,7 +61,7 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
         String message;
         if (demon== null){
             message = "Elige el esbirro que quiere que tenga tu personaje:\n 0) Ninguno\n1) Demonio \n 2) Ghoul \n 3) Humano";
-        }else message = "Elige el esbirro que quiere que tenga tu demonio:\n 0) Ninguno\n1) Demonio \n 2) Ghoul \n 3) Humano";
+        }else message = "Elige los esbirros que quiere que tenga tu demonio:\n 0) Ninguno\n1) Demonio \n 2) Ghoul \n 3) Humano";
         switch (requestNumber(message,0,3,sc)) {
             case 0:{
                 if (demon==null){
