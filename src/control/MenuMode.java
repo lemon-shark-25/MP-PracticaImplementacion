@@ -78,6 +78,7 @@ public class MenuMode implements Mode{
 
 	@Override
 	public Mode showScreen() {
+		initCommands();
 		char option = screen.showScreen(commands.keySet());
 		return doAction(option);
 	}
