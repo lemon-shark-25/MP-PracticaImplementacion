@@ -67,7 +67,7 @@ public class RegisterCharacterCommand implements Command{
                 case 1:{
                     LycanthropeCreator lycanCreator = new LycanthropeCreator();
                     Lycanthrope lycan = lycanCreator.create();
-                    LycanthropeCharacterBuilder lycanBuilder = new LycanthropeCharacterBuilder(discipline,armor,weapon,strength,weakness);
+                    LycanthropeCharacterBuilder lycanBuilder = new LycanthropeCharacterBuilder(will,armor,weapon,strength,weakness);
                     Player play = (Player) context.getCurrentUser();
                     play.setGameCharacter(lycanBuilder.gameCharacterBuilder(lycan));
                     break; 
@@ -75,7 +75,7 @@ public class RegisterCharacterCommand implements Command{
                 case 2:{    
                     HunterCreator huntCreator = new HunterCreator();
                     Hunter hunt = huntCreator.create();
-                    HunterCharacterBuilder huntBuilder = new HunterCharacterBuilder(discipline,armor,weapon,strength,weakness);
+                    HunterCharacterBuilder huntBuilder = new HunterCharacterBuilder(gift,armor,weapon,strength,weakness);
                     Player play = (Player) context.getCurrentUser();
                     play.setGameCharacter(huntBuilder.gameCharacterBuilder(hunt));
                     break; 
