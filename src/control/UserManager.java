@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,6 +71,10 @@ public class UserManager {
 
 	public void remove(String nick) {
 		usuarios.remove(nick);
+	}
+
+	public Collection<User> getUsers() {
+		return usuarios.values();
 	}
 	
 }

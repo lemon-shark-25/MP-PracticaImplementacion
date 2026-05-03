@@ -60,7 +60,7 @@ public class MenuMode implements Mode{
 		commands.put('b', new AcceptChallengeCommand(context, userManager, challengeMediator));
 		commands.put('c', new RegisterCharacterCommand(context));
 		commands.put('d', new EditCharacterCommand());
-		commands.put('e', new CheckRankingCommand(context));
+		commands.put('e', new CheckRankingCommand(context, userManager, authManager, challengeMediator));
 		commands.put('f', new UnregisterCommand(context, userManager, authManager, challengeMediator));
 		commands.put('g', new ExitCommand(context));
 	}	
@@ -71,7 +71,7 @@ public class MenuMode implements Mode{
 		commands.put('a', new ValidateChallengeCommand(context, userManager, challengeMediator, authManager));
 		commands.put('b', new AdminEditCharacterCommand(context, userManager));
 		commands.put('c', new ManageUsersCommand(context, userManager));
-		commands.put('d', new CheckRankingCommand(context));
+		commands.put('d', new CheckRankingCommand(context, userManager, authManager, challengeMediator));
 		commands.put('e', new UnregisterCommand(context, userManager, authManager, challengeMediator));
 		commands.put('f', new ExitCommand(context));
 	}
