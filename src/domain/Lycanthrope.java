@@ -11,7 +11,7 @@ public class Lycanthrope extends GameCharacter {
     private int height;
     private int weight;
     private final int rage =0;
-    private boolean mode;
+    private boolean mode = false;
     
     public int getHeigth() {
         return height;

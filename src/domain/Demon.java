@@ -58,4 +58,6 @@ public class Demon implements Minion{
     public void removeMinion(Minion minion){
         minions.remove(minion);
     }
+    
 }
+

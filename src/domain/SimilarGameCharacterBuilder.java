@@ -74,12 +74,19 @@ public abstract class SimilarGameCharacterBuilder implements GameCharacterBuilde
                 int health = requestNumber("Elige la salud del esbirro",1,3,sc);
                 String pact = requestString("Describe la depndencia del esbirro",sc);
                 if (demon==null){
-                    Demon demonion = new Demon(name,health,characterr,pact,null);
-                    setMinion(characterr,sc,demonion);
-                    characterr.setMinion(demonion);
+                    Demon demonion = new Demon(name,health,characterr,pact,new LinkedList<>());
+                    int size;
+                    do{
+                        size = demonion.getMinions().size();
+                        setMinion(characterr,sc,demonion);
+                    } while(size!=demonion.getMinions().size());                    characterr.setMinion(demonion);
                 }else{
-                    Demon demonion = new Demon(name,health,characterr,pact,null);
-                    setMinion(characterr,sc,demonion);
+                    Demon demonion = new Demon(name,health,characterr,pact,new LinkedList<>());
+                    int size;
+                    do{
+                        size = demonion.getMinions().size();
+                        setMinion(characterr,sc,demonion);
+                    } while(size!=demonion.getMinions().size());
                     demon.addMinion(demonion);
                 }
                 break;
