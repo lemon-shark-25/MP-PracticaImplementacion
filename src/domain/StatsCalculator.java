@@ -4,9 +4,9 @@ public class StatsCalculator {
     private DamageStrategy Algorithm;
     private DefenseStrategy Algorithm;
     
-	public StatsCalculator{
-    	this.DamageStrategy= new DamageAlgorithm;
-	    this.DefenceAlgorithm= new DefenceAlgorithm;
+	public StatsCalculator(){
+    	this.DamageStrategy= new DamageAlgorithm();
+	    this.DefenceAlgorithm= new DefenceAlgorithm();
     }
 
 	public int calculatedamage(Character c) {

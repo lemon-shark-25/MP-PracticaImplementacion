@@ -12,6 +12,8 @@ import domain.Administrator;
 import domain.Challenge;
 import domain.ChallengeMediator;
 import interaction.MenuScreen;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *

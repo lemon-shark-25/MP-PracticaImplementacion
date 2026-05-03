@@ -18,7 +18,6 @@ import java.util.Map;
  */
 public class AdminChallengeValidationMode implements Mode{
 	
-
 	private final Screen screen;
 	private final GameContext context;
 	private final UserManager userManager;

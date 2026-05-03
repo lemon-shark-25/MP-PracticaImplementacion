@@ -28,9 +28,9 @@ public class Catalogue {
 			"./data/will.csv", "./data/armor.csv", "./data/weapon.csv",
 			"./data/strength.csv", "./data/weakness.csv"};
 		//Bucle de carga de los HashMap
-                for (String file: routes){
-                    loadFile(file);
-                }
+		for (String file: routes){
+			loadFile(file);
+		}
 	}
 	
     public HashMap<String, Discipline> getDiscipline() {
