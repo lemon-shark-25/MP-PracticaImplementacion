@@ -57,23 +57,31 @@ public abstract class EditGameCharacter {
     
     public void changeModifier(GameCharacter characterr, Scanner sc, boolean mode){      
         int election = 0;
-        String[] inventary;
-        HashMap<String, Modifier> modifierChoosen= new HashMap<>();
-        HashMap<String,Modifier> cop;
-        String messagee;
         System.out.println("0) No cambiar nada");
         if(mode){
             System.out.println("1) Añadir fortalezas");
             System.out.println("2) Eliminar fortalezas");
-            cop = new HashMap<>(strength);
         }else{
             System.out.println("1) Añadir debilidades");
             System.out.println("2) Eliminar debilidades");
-            cop = new HashMap<>(weakness);
+        }
+        election = requestNumber("Escoge una opcion", 0, 2,sc);
+        switch (election){
+            case 0:{
+                break;
+            }
+            case 1:{
+                addModifier(characterr,sc,mode);               
+                break;
+            }
+            case 2:{
+                eliminateModifier(characterr,sc,mode);
+                break;                
+            }
         }
     }
     
-    protected void eliminate(GameCharacter characterr, Scanner sc, boolean mode){
+    protected void eliminateModifier(GameCharacter characterr, Scanner sc, boolean mode){
         String[] total;
         if (mode){            
             total = showOptions(characterr.getStrength(), sc, true, "modificador");
@@ -88,6 +96,34 @@ public abstract class EditGameCharacter {
                 characterr.getWeakness().remove(total[election-1]);
             }
         }   
+    }
+    
+    protected void addModifier(GameCharacter characterr, Scanner sc, boolean mode){
+        HashMap<String, Modifier> faltantes;
+        int election =0;
+        if (mode){
+            do{
+                faltantes = new HashMap<>(characterr.getStrength());
+                faltantes.keySet().removeAll(strength.keySet());
+                String[] inventary = showOptions(faltantes,sc,true,"modificador");
+                election = requestNumber("Escoge la habilidad de tu personaje pulsando el número", 0, inventary.length, sc);
+                if (election!=0){
+                    String name =inventary[election-1];
+                    characterr.getStrength().put(name, (Strength) faltantes.get(name));
+                } 
+            }while(election!=0);
+        }else {
+            do{
+                faltantes = new HashMap<>(characterr.getWeakness());
+                faltantes.keySet().removeAll(weakness.keySet());
+                String[] inventary = showOptions(faltantes,sc,true,"modificador");
+                election = requestNumber("Escoge la habilidad de tu personaje pulsando el número", 0, inventary.length, sc);
+                if (election!=0){
+                    String name =inventary[election-1];
+                    characterr.getWeakness().put(name, (Weakness) faltantes.get(name));
+                }
+            }while(election!=0);
+        }
     }
     
     public void changePrincipalEquipment(GameCharacter characterr, Scanner sc, boolean mode){
@@ -172,7 +208,6 @@ public abstract class EditGameCharacter {
             inventary.add(desc.getName());
             number ++;
         }
-        
         return inventary.toArray(new String[0]);
     }
 }
